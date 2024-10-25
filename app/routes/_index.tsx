@@ -6,6 +6,7 @@ import {
   FaBusinessTime,
   FaCode,
   FaFacebook,
+  FaHamburger,
   FaLaptopCode,
   FaLinkedin,
 } from "react-icons/fa";
@@ -19,6 +20,7 @@ import {
   MdOutlineDataThresholding,
   MdVideoSettings,
 } from "react-icons/md";
+import { FaX } from "react-icons/fa6";
 
 export const meta: MetaFunction = () => {
   return [
@@ -74,7 +76,23 @@ export default function Index() {
           <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
             G-CODE <span className="sr-only">G-CODE</span>
           </h1>
-          <div className="flex justify-center items-center gap-x-3">
+          <div className="flex md:hidden">
+            <button>
+              <FaHamburger />
+            </button>
+            <div className="flex flex-col w-full backdrop-blur absolute top-0 right-0">
+              <button className="">
+                <FaX />
+              </button>
+
+              <div className="flex flex-col gap-x-2">
+                <div>about</div>
+                <div>about</div>
+                <div>about</div>
+              </div>
+            </div>
+          </div>
+          <div className="md:flex justify-center items-center gap-x-3 hidden">
             <div>ABOUT US</div>
             <div>SERVICES</div>
             <div>CONTACT</div>
@@ -104,8 +122,8 @@ export default function Index() {
           </ul>
         </nav> */}
         <main
-          className="flex flex-col w-full grow text-white"
-          style={{ backgroundColor: "#121b21" }}
+          className="flex flex-col w-full grow"
+          /*  style={{ backgroundColor: "#121b21" }} */
         >
           {/*  <Outlet /> */}
           <div
@@ -121,11 +139,11 @@ export default function Index() {
             </button>
             {/*    <img className="" src="laptop-cool.jpg" alt="code" /> */}
           </div>
-          <div className="flex w-full">
-            <div className="flex flex-1 items-center justify-center bg-slate-400 font-extrabold text-4xl">
-              ABOUT US
+          <div className="flex flex-col md:flex-row w-full shadow-md">
+            <div className="flex flex-1 items-center justify-center font-extrabold text-4xl">
+              G-CODE...its that simple
             </div>
-            <div className=" flex flex-1 items-center justify-center p-4 bg-slate-500">
+            <div className=" flex flex-1 items-center justify-center p-4">
               Our business specializes in developing custom web software
               solutions tailored to meet the unique needs of our clients. We
               combine modern technologies with user-friendly design to create
@@ -140,9 +158,9 @@ export default function Index() {
               businesses grow in the digital space.
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-4 py-5">
+          <div className="grid md:grid-cols-3 gap-4 py-5">
             {/* <div className="">SERVICES</div> */}
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center  bg-slate-200 p-3">
               {/* <FaCode size={50} /> */}
               <span>DEVELOPMENT</span>
               <img
@@ -156,7 +174,7 @@ export default function Index() {
                 ensuring scalability, security, and efficiency.
               </span>
             </div>
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center bg-slate-200 p-3">
               {/* <FaLaptopCode size={50} /> */}
               <span>DESIGN</span>
 
@@ -171,7 +189,7 @@ export default function Index() {
                 appealing digital interfaces.
               </span>
             </div>
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center  bg-slate-200 p-3">
               <span>BUSINESS ANALYSIS</span>
               {/* <MdOutlineDataThresholding size={50} /> */}
               <img
@@ -186,10 +204,10 @@ export default function Index() {
               </span>
             </div>
           </div>
-          <div ref={contactRef} className="bg-slate-600">
+          <div ref={contactRef} className="bg-slate-200 shadow-md">
             Contact forma
             <Form
-              className="flex flex-col"
+              className="flex flex-col max-w-96"
               onSubmit={handleSubmit}
               method="POST"
             >
