@@ -1,34 +1,89 @@
-import type { MetaFunction } from "@remix-run/node";
+import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
+import { Form } from "@remix-run/react";
+import { useRef } from "react";
+import { BsPencilSquare } from "react-icons/bs";
+import {
+  FaBusinessTime,
+  FaCode,
+  FaFacebook,
+  FaLaptopCode,
+  FaLinkedin,
+} from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+import { getValidatedFormData, useRemixForm } from "remix-hook-form";
+import * as zod from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  MdDisplaySettings,
+  MdOutlineAnalytics,
+  MdOutlineDataThresholding,
+  MdVideoSettings,
+} from "react-icons/md";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "G-CODE" },
+    { name: "description", content: "Welcome to G-CODE!" },
   ];
 };
 
+const schema = zod.object({
+  name: zod.string().min(1),
+  email: zod.string().email().min(1),
+  query: zod.string().email().min(1),
+});
+
+type FormData = zod.infer<typeof schema>;
+
+const resolver = zodResolver(schema);
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const {
+    errors,
+    data,
+    receivedValues: defaultValues,
+  } = await getValidatedFormData<FormData>(request, resolver);
+  if (errors) {
+    // The keys "errors" and "defaultValues" are picked up automatically by useRemixForm
+    return json({ errors, defaultValues });
+  }
+
+  // Do something with the data
+  return json(data);
+};
+
 export default function Index() {
+  const contactRef = useRef<HTMLDivElement | null>(null);
+
+  const {
+    handleSubmit,
+    formState: { errors },
+    register,
+  } = useRemixForm<FormData>({
+    mode: "onSubmit",
+    /* resolver, */
+  });
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="flex h-screen items-center justify-center">
-      <div className="flex flex-col items-center gap-16">
-        <header className="flex flex-col items-center gap-9">
+      <div className="flex flex-col items-center w-full h-full ">
+        <header className="flex gap-9 w-full p-3 justify-between items-center">
           <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
-            Welcome to <span className="sr-only">Remix</span>
+            G-CODE <span className="sr-only">G-CODE</span>
           </h1>
-          <div className="h-[144px] w-[434px]">
-            <img
-              src="/logo-light.png"
-              alt="Remix"
-              className="block w-full dark:hidden"
-            />
-            <img
-              src="/logo-dark.png"
-              alt="Remix"
-              className="hidden w-full dark:block"
-            />
+          <div className="flex justify-center items-center gap-x-3">
+            <div>ABOUT US</div>
+            <div>SERVICES</div>
+            <div>CONTACT</div>
+            <img src="cro-flag.svg" alt="" />
+            <img src="us-flag.svg" alt="" />
           </div>
         </header>
-        <nav className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
+
+        {/*  <nav className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
           <p className="leading-6 text-gray-700 dark:text-gray-200">
             What&apos;s next?
           </p>
@@ -47,7 +102,123 @@ export default function Index() {
               </li>
             ))}
           </ul>
-        </nav>
+        </nav> */}
+        <main
+          className="flex flex-col w-full grow text-white"
+          style={{ backgroundColor: "#121b21" }}
+        >
+          {/*  <Outlet /> */}
+          <div
+            className="flex flex-col h-96 w-full bg-cover bg-center items-center justify-center text-white "
+            style={{ backgroundImage: "url('/laptop-cool.jpg')" }}
+          >
+            <h1 className="text-3xl font-bold ">YOUR BEST DIGITAL PARTNER</h1>
+            <button
+              className="font-semibold rounded transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5 "
+              onClick={scrollToContact}
+            >
+              Contact
+            </button>
+            {/*    <img className="" src="laptop-cool.jpg" alt="code" /> */}
+          </div>
+          <div className="flex w-full">
+            <div className="flex flex-1 items-center justify-center bg-slate-400 font-extrabold text-4xl">
+              ABOUT US
+            </div>
+            <div className=" flex flex-1 items-center justify-center p-4 bg-slate-500">
+              Our business specializes in developing custom web software
+              solutions tailored to meet the unique needs of our clients. We
+              combine modern technologies with user-friendly design to create
+              scalable, secure, and high-performance web applications. From
+              e-commerce platforms to enterprise management systems, we deliver
+              solutions that streamline operations and drive digital
+              transformation. Our team of expert developers is dedicated to
+              ensuring each project is delivered on time and exceeds
+              expectations. We focus on understanding our clients goals to
+              provide innovative solutions that enhance their online presence.
+              With a commitment to quality and ongoing support, we help
+              businesses grow in the digital space.
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-4 py-5">
+            {/* <div className="">SERVICES</div> */}
+            <div className="flex flex-col justify-center items-center">
+              {/* <FaCode size={50} /> */}
+              <span>DEVELOPMENT</span>
+              <img
+                className="max-h-28"
+                src="undraw_progressive_app_m-9-ms.svg"
+                alt=""
+              />
+              <span>
+                We create custom, high-performance web applications tailored to
+                meet specific client needs, using modern technologies and
+                ensuring scalability, security, and efficiency.
+              </span>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              {/* <FaLaptopCode size={50} /> */}
+              <span>DESIGN</span>
+
+              <img
+                className="max-h-28"
+                src="undraw_designer_life_re_6ywf.svg"
+                alt=""
+              />
+              <span>
+                Our design services focus on user experience, combining
+                aesthetics with functionality to create intuitive, visually
+                appealing digital interfaces.
+              </span>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <span>BUSINESS ANALYSIS</span>
+              {/* <MdOutlineDataThresholding size={50} /> */}
+              <img
+                className="max-h-28"
+                src="undraw_business_plan_re_0v81.svg"
+                alt=""
+              />
+              <span>
+                We help businesses optimize their digital strategies by
+                analyzing data and providing actionable insights to improve
+                operational efficiency and digital transformation.
+              </span>
+            </div>
+          </div>
+          <div ref={contactRef} className="bg-slate-600">
+            Contact forma
+            <Form
+              className="flex flex-col"
+              onSubmit={handleSubmit}
+              method="POST"
+            >
+              <label className="flex flex-col">
+                Name:
+                <input type="text" {...register("name")} />
+                {errors.name && <p>{errors.name.message}</p>}
+              </label>
+              <label className="flex flex-col">
+                Email:
+                <input type="email" {...register("email")} />
+                {errors.email && <p>{errors.email.message}</p>}
+              </label>
+              <label className="flex flex-col">
+                Query:
+                <textarea rows={4} cols={50} {...register("query")} />
+                {errors.email && <p>{errors.email.message}</p>}
+              </label>
+              <button type="submit">Submit</button>
+            </Form>
+          </div>
+        </main>
+        <footer className="bg-green-600 w-full flex justify-between">
+          <span>G-CODE</span>
+          <span>info@g-code.com</span>
+          <span>+385993255982</span>
+          <FaFacebook />
+          <FaLinkedin />
+        </footer>
       </div>
     </div>
   );
