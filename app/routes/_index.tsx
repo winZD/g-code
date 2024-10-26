@@ -1,6 +1,6 @@
 import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
 import { Form } from "@remix-run/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { BsPencilSquare } from "react-icons/bs";
 import {
   FaBusinessTime,
@@ -54,6 +54,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 };
 
 export default function Index() {
+  const [open, setOpen] = useState(false);
   const contactRef = useRef<HTMLDivElement | null>(null);
 
   const {
@@ -77,20 +78,26 @@ export default function Index() {
             G-CODE <span className="sr-only">G-CODE</span>
           </h1>
           <div className="flex md:hidden">
-            <button>
-              <FaHamburger />
-            </button>
-            <div className="flex flex-col w-full backdrop-blur absolute top-0 right-0">
-              <button className="">
-                <FaX />
+            {
+              <button onClick={() => setOpen(!open)}>
+                {open ? <FaX size={25} /> : <FaHamburger size={25} />}
               </button>
+            }
+            {open && (
+              <div className="flex flex-col w-full backdrop-blur absolute top-10 right-0 bg-white">
+                <div className="flex justify-end">
+                  {/*  <button onClick={() => setOpen(false)} className="p-3">
+                    <FaX size={25} />
+                  </button> */}
+                </div>
 
-              <div className="flex flex-col gap-x-2">
-                <div>about</div>
-                <div>about</div>
-                <div>about</div>
+                <div className="flex flex-col gap-x-2 justify-center items-center">
+                  <div>ABOUT</div>
+                  <div>SERVICES</div>
+                  <div>CONTACT</div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <div className="md:flex justify-center items-center gap-x-3 hidden">
             <div>ABOUT US</div>
@@ -174,7 +181,10 @@ export default function Index() {
                 ensuring scalability, security, and efficiency.
               </span>
             </div>
-            <div className="flex flex-col justify-center items-center bg-slate-200 p-3">
+            <div
+              className="flex flex-col justify-center items-center bg-slate-200 p-3"
+              style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }}
+            >
               {/* <FaLaptopCode size={50} /> */}
               <span>DESIGN</span>
 
