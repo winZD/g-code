@@ -100,17 +100,17 @@ export default function Index() {
                 </div>
 
                 <div className="flex flex-col gap-x-2 justify-center items-center">
-                  <div>ABOUT</div>
-                  <div>SERVICES</div>
-                  <div>CONTACT</div>
+                  <button onClick={scrollToAboutUs}>ABOUT</button>
+                  <button onClick={scrollToServices}>SERVICES</button>
+                  <button onClick={scrollToContact}>CONTACT</button>
                 </div>
               </div>
             )}
           </div>
           <div className="md:flex justify-center items-center gap-x-3 hidden">
-            <div>ABOUT US</div>
-            <div>SERVICES</div>
-            <div>CONTACT</div>
+            <button onClick={scrollToAboutUs}>ABOUT</button>
+            <button onClick={scrollToServices}>SERVICES</button>
+            <button onClick={scrollToContact}>CONTACT</button>
             <img src="cro-flag.svg" alt="" />
             <img src="us-flag.svg" alt="" />
           </div>
