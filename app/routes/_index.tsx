@@ -178,7 +178,7 @@ export default function Index() {
           </div>
           <div ref={servicesRef} className="grid md:grid-cols-3 gap-4 py-5">
             {/* <div className="">SERVICES</div> */}
-            <div className="flex flex-col justify-center items-center  bg-slate-200 p-3 shadow-2xl">
+            <div className="flex flex-col justify-center items-center p-3 shadow-2xl">
               {/* <FaCode size={50} /> */}
               <span>DEVELOPMENT</span>
               <img
@@ -193,7 +193,7 @@ export default function Index() {
               </span>
             </div>
             <div
-              className="flex flex-col justify-center items-center bg-slate-200 p-3 shadow-2xl"
+              className="flex flex-col justify-center items-center  p-3 shadow-2xl"
               /* style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }} */
             >
               {/* <FaLaptopCode size={50} /> */}
@@ -210,7 +210,7 @@ export default function Index() {
                 appealing digital interfaces.
               </span>
             </div>
-            <div className="flex flex-col justify-center items-center rounded-md p-3 shadow-2xl m-2">
+            <div className="flex flex-col justify-center items-center rounded-md p-3 shadow-2xl">
               <span>BUSINESS ANALYSIS</span>
               {/* <MdOutlineDataThresholding size={50} /> */}
               <img
