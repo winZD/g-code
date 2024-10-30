@@ -56,6 +56,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 export default function Index() {
   const [open, setOpen] = useState(false);
   const contactRef = useRef<HTMLDivElement | null>(null);
+  const aboutUsRef = useRef<HTMLDivElement | null>(null);
+  const servicesRef = useRef<HTMLDivElement | null>(null);
 
   const {
     handleSubmit,
@@ -68,6 +70,12 @@ export default function Index() {
 
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToAboutUs = () => {
+    aboutUsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToServices = () => {
+    servicesRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -129,7 +137,7 @@ export default function Index() {
           </ul>
         </nav> */}
         <main
-          className="flex flex-col w-full grow"
+          className="flex flex-col w-full grow bg-gray-100"
           /*  style={{ backgroundColor: "#121b21" }} */
         >
           {/*  <Outlet /> */}
@@ -146,7 +154,10 @@ export default function Index() {
             </button>
             {/*    <img className="" src="laptop-cool.jpg" alt="code" /> */}
           </div>
-          <div className="flex flex-col md:flex-row w-full shadow-md">
+          <div
+            ref={aboutUsRef}
+            className="flex flex-col md:flex-row w-full shadow-md bg-blue-950 text-white"
+          >
             <div className="flex flex-1 items-center justify-center font-extrabold text-4xl">
               G-CODE...its that simple
             </div>
@@ -165,9 +176,9 @@ export default function Index() {
               businesses grow in the digital space.
             </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-4 py-5">
+          <div ref={servicesRef} className="grid md:grid-cols-3 gap-4 py-5">
             {/* <div className="">SERVICES</div> */}
-            <div className="flex flex-col justify-center items-center  bg-slate-200 p-3">
+            <div className="flex flex-col justify-center items-center  bg-slate-200 p-3 shadow-2xl">
               {/* <FaCode size={50} /> */}
               <span>DEVELOPMENT</span>
               <img
@@ -182,8 +193,8 @@ export default function Index() {
               </span>
             </div>
             <div
-              className="flex flex-col justify-center items-center bg-slate-200 p-3"
-              style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }}
+              className="flex flex-col justify-center items-center bg-slate-200 p-3 shadow-2xl"
+              /* style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }} */
             >
               {/* <FaLaptopCode size={50} /> */}
               <span>DESIGN</span>
@@ -199,7 +210,7 @@ export default function Index() {
                 appealing digital interfaces.
               </span>
             </div>
-            <div className="flex flex-col justify-center items-center  bg-slate-200 p-3">
+            <div className="flex flex-col justify-center items-center rounded-md p-3 shadow-2xl m-2">
               <span>BUSINESS ANALYSIS</span>
               {/* <MdOutlineDataThresholding size={50} /> */}
               <img
@@ -214,33 +225,50 @@ export default function Index() {
               </span>
             </div>
           </div>
-          <div ref={contactRef} className="bg-slate-200 shadow-md">
+          <div ref={contactRef} className="p-3">
             Contact forma
             <Form
-              className="flex flex-col max-w-96"
+              className="flex flex-col"
               onSubmit={handleSubmit}
               method="POST"
             >
-              <label className="flex flex-col">
-                Name:
-                <input type="text" {...register("name")} />
-                {errors.name && <p>{errors.name.message}</p>}
-              </label>
-              <label className="flex flex-col">
-                Email:
-                <input type="email" {...register("email")} />
-                {errors.email && <p>{errors.email.message}</p>}
-              </label>
+              <div className="flex gap-x-2">
+                {" "}
+                <label className="flex flex-col w-full">
+                  Name:
+                  <input
+                    className="border-solid border-2 border-slate-300"
+                    type="text"
+                    {...register("name")}
+                  />
+                  {errors.name && <p>{errors.name.message}</p>}
+                </label>
+                <label className="flex flex-col w-full">
+                  Email:
+                  <input
+                    className="border-solid border-2 border-slate-300"
+                    type="email"
+                    {...register("email")}
+                  />
+                  {errors.email && <p>{errors.email.message}</p>}
+                </label>
+              </div>
+
               <label className="flex flex-col">
                 Query:
-                <textarea rows={4} cols={50} {...register("query")} />
+                <textarea
+                  className="border-solid border-2 border-slate-300"
+                  rows={4}
+                  cols={50}
+                  {...register("query")}
+                />
                 {errors.email && <p>{errors.email.message}</p>}
               </label>
               <button type="submit">Submit</button>
             </Form>
           </div>
         </main>
-        <footer className="bg-green-600 w-full flex justify-between">
+        <footer className="bg-blue-950 text-white w-full flex justify-between items-center p-3">
           <span>G-CODE</span>
           <span>info@g-code.com</span>
           <span>+385993255982</span>
