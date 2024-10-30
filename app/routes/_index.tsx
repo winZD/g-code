@@ -180,12 +180,13 @@ export default function Index() {
             {/* <div className="">SERVICES</div> */}
             <div className="flex flex-col justify-center items-center p-3 shadow-2xl">
               {/* <FaCode size={50} /> */}
-              <span>DEVELOPMENT</span>
+
               <img
                 className="max-h-28"
                 src="undraw_progressive_app_m-9-ms.svg"
                 alt=""
               />
+              <span>DEVELOPMENT</span>
               <span>
                 We create custom, high-performance web applications tailored to
                 meet specific client needs, using modern technologies and
@@ -193,17 +194,18 @@ export default function Index() {
               </span>
             </div>
             <div
-              className="flex flex-col justify-center items-center  p-3 shadow-2xl"
+              className="flex flex-col justify-center items-center p-3 shadow-2xl"
               /* style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }} */
             >
               {/* <FaLaptopCode size={50} /> */}
-              <span>DESIGN</span>
 
               <img
                 className="max-h-28"
                 src="undraw_designer_life_re_6ywf.svg"
                 alt=""
               />
+              <span>DESIGN</span>
+
               <span>
                 Our design services focus on user experience, combining
                 aesthetics with functionality to create intuitive, visually
@@ -211,13 +213,14 @@ export default function Index() {
               </span>
             </div>
             <div className="flex flex-col justify-center items-center rounded-md p-3 shadow-2xl">
-              <span>BUSINESS ANALYSIS</span>
               {/* <MdOutlineDataThresholding size={50} /> */}
+
               <img
                 className="max-h-28"
                 src="undraw_business_plan_re_0v81.svg"
                 alt=""
               />
+              <span>BUSINESS ANALYSIS</span>
               <span>
                 We help businesses optimize their digital strategies by
                 analyzing data and providing actionable insights to improve
