@@ -110,8 +110,8 @@ export default function Index() {
           <button onClick={scrollToAboutUs}>ABOUT</button>
           <button onClick={scrollToServices}>SERVICES</button>
           <button onClick={scrollToContact}>CONTACT</button>
-          <img src="cro-flag.svg" alt="" />
-          <img src="us-flag.svg" alt="" />
+          {/*    <img src="cro-flag.svg" alt="" />
+          <img src="us-flag.svg" alt="" /> */}
         </div>
       </header>
 
@@ -245,7 +245,7 @@ export default function Index() {
           </Form>
         </div>
       </main>
-      <footer className="bg-blue-950 text-white w-full flex justify-between items-center p-3">
+      <footer className=" flex flex-col md:flex-row bg-blue-950 text-white w-full flex justify-between items-center p-3">
         <span>G-CODE</span>
         <span>info@g-code.com</span>
         <span>+385993255982</span>
