@@ -79,206 +79,179 @@ export default function Index() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="flex flex-col items-center w-full h-full ">
-        <header className="flex gap-9 w-full p-3 justify-between items-center">
-          <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
-            G-CODE <span className="sr-only">G-CODE</span>
-          </h1>
-          <div className="flex md:hidden">
-            {
-              <button onClick={() => setOpen(!open)}>
-                {open ? <FaX size={25} /> : <FaHamburger size={25} />}
-              </button>
-            }
-            {open && (
-              <div className="flex flex-col w-full backdrop-blur absolute top-10 right-0 bg-white">
-                <div className="flex justify-end">
-                  {/*  <button onClick={() => setOpen(false)} className="p-3">
+    <div className="flex flex-col h-screen">
+      <header className="flex gap-9 w-full p-3 justify-between items-center bg-white fixed top-0">
+        <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
+          G-CODE <span className="sr-only">G-CODE</span>
+        </h1>
+        <div className="flex md:hidden">
+          {
+            <button onClick={() => setOpen(!open)}>
+              {open ? <FaX size={25} /> : <FaHamburger size={25} />}
+            </button>
+          }
+          {open && (
+            <div className="flex flex-col w-full backdrop-blur absolute top-10 right-0 bg-white">
+              <div className="flex justify-end">
+                {/*  <button onClick={() => setOpen(false)} className="p-3">
                     <FaX size={25} />
                   </button> */}
-                </div>
-
-                <div className="flex flex-col gap-x-2 justify-center items-center">
-                  <button onClick={scrollToAboutUs}>ABOUT</button>
-                  <button onClick={scrollToServices}>SERVICES</button>
-                  <button onClick={scrollToContact}>CONTACT</button>
-                </div>
               </div>
-            )}
-          </div>
-          <div className="md:flex justify-center items-center gap-x-3 hidden">
-            <button onClick={scrollToAboutUs}>ABOUT</button>
-            <button onClick={scrollToServices}>SERVICES</button>
-            <button onClick={scrollToContact}>CONTACT</button>
-            <img src="cro-flag.svg" alt="" />
-            <img src="us-flag.svg" alt="" />
-          </div>
-        </header>
 
-        {/*  <nav className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
-          <p className="leading-6 text-gray-700 dark:text-gray-200">
-            What&apos;s next?
-          </p>
-          <ul>
-            {resources.map(({ href, text, icon }) => (
-              <li key={href}>
-                <a
-                  className="group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {icon}
-                  {text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav> */}
-        <main
-          className="flex flex-col w-full grow bg-gray-100"
-          /*  style={{ backgroundColor: "#121b21" }} */
+              <div className="flex flex-col gap-x-2 justify-center items-center">
+                <button onClick={scrollToAboutUs}>ABOUT</button>
+                <button onClick={scrollToServices}>SERVICES</button>
+                <button onClick={scrollToContact}>CONTACT</button>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="md:flex justify-center items-center gap-x-3 hidden">
+          <button onClick={scrollToAboutUs}>ABOUT</button>
+          <button onClick={scrollToServices}>SERVICES</button>
+          <button onClick={scrollToContact}>CONTACT</button>
+          <img src="cro-flag.svg" alt="" />
+          <img src="us-flag.svg" alt="" />
+        </div>
+      </header>
+
+      <main
+        className="flex flex-col w-full grow bg-gray-100 "
+        /*  style={{ backgroundColor: "#121b21" }} */
+      >
+        {/*  <Outlet /> */}
+        <div
+          className="flex flex-col h-96 w-full bg-cover bg-center items-center justify-center text-white "
+          style={{ backgroundImage: "url('/laptop-cool.jpg')" }}
         >
-          {/*  <Outlet /> */}
-          <div
-            className="flex flex-col h-96 w-full bg-cover bg-center items-center justify-center text-white "
-            style={{ backgroundImage: "url('/laptop-cool.jpg')" }}
+          <h1 className="text-3xl font-bold ">YOUR BEST DIGITAL PARTNER</h1>
+          <button
+            className="font-semibold rounded transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5 "
+            onClick={scrollToContact}
           >
-            <h1 className="text-3xl font-bold ">YOUR BEST DIGITAL PARTNER</h1>
-            <button
-              className="font-semibold rounded transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5 "
-              onClick={scrollToContact}
-            >
-              Contact
-            </button>
-            {/*    <img className="" src="laptop-cool.jpg" alt="code" /> */}
+            Contact
+          </button>
+          {/*    <img className="" src="laptop-cool.jpg" alt="code" /> */}
+        </div>
+        <div
+          ref={aboutUsRef}
+          className="flex flex-col md:flex-row w-full shadow-md bg-blue-950 text-white"
+        >
+          <div className="flex flex-1 items-center justify-center font-extrabold text-4xl">
+            G-CODE...its that simple
+          </div>
+          <div className=" flex flex-1 items-center justify-center p-4">
+            Our business specializes in developing custom web software solutions
+            tailored to meet the unique needs of our clients. We combine modern
+            technologies with user-friendly design to create scalable, secure,
+            and high-performance web applications. From e-commerce platforms to
+            enterprise management systems, we deliver solutions that streamline
+            operations and drive digital transformation. Our team of expert
+            developers is dedicated to ensuring each project is delivered on
+            time and exceeds expectations. We focus on understanding our clients
+            goals to provide innovative solutions that enhance their online
+            presence. With a commitment to quality and ongoing support, we help
+            businesses grow in the digital space.
+          </div>
+        </div>
+        <div ref={servicesRef} className="grid md:grid-cols-3 gap-4 py-5">
+          {/* <div className="">SERVICES</div> */}
+          <div className="flex flex-col justify-center items-center p-3 shadow-2xl">
+            {/* <FaCode size={50} /> */}
+
+            <img
+              className="max-h-28"
+              src="undraw_progressive_app_m-9-ms.svg"
+              alt=""
+            />
+            <span>DEVELOPMENT</span>
+            <span>
+              We create custom, high-performance web applications tailored to
+              meet specific client needs, using modern technologies and ensuring
+              scalability, security, and efficiency.
+            </span>
           </div>
           <div
-            ref={aboutUsRef}
-            className="flex flex-col md:flex-row w-full shadow-md bg-blue-950 text-white"
+            className="flex flex-col justify-center items-center p-3 shadow-2xl"
+            /* style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }} */
           >
-            <div className="flex flex-1 items-center justify-center font-extrabold text-4xl">
-              G-CODE...its that simple
-            </div>
-            <div className=" flex flex-1 items-center justify-center p-4">
-              Our business specializes in developing custom web software
-              solutions tailored to meet the unique needs of our clients. We
-              combine modern technologies with user-friendly design to create
-              scalable, secure, and high-performance web applications. From
-              e-commerce platforms to enterprise management systems, we deliver
-              solutions that streamline operations and drive digital
-              transformation. Our team of expert developers is dedicated to
-              ensuring each project is delivered on time and exceeds
-              expectations. We focus on understanding our clients goals to
-              provide innovative solutions that enhance their online presence.
-              With a commitment to quality and ongoing support, we help
-              businesses grow in the digital space.
-            </div>
+            {/* <FaLaptopCode size={50} /> */}
+
+            <img
+              className="max-h-28"
+              src="undraw_designer_life_re_6ywf.svg"
+              alt=""
+            />
+            <span>DESIGN</span>
+
+            <span>
+              Our design services focus on user experience, combining aesthetics
+              with functionality to create intuitive, visually appealing digital
+              interfaces.
+            </span>
           </div>
-          <div ref={servicesRef} className="grid md:grid-cols-3 gap-4 py-5">
-            {/* <div className="">SERVICES</div> */}
-            <div className="flex flex-col justify-center items-center p-3 shadow-2xl">
-              {/* <FaCode size={50} /> */}
+          <div className="flex flex-col justify-center items-center rounded-md p-3 shadow-2xl">
+            {/* <MdOutlineDataThresholding size={50} /> */}
 
-              <img
-                className="max-h-28"
-                src="undraw_progressive_app_m-9-ms.svg"
-                alt=""
-              />
-              <span>DEVELOPMENT</span>
-              <span>
-                We create custom, high-performance web applications tailored to
-                meet specific client needs, using modern technologies and
-                ensuring scalability, security, and efficiency.
-              </span>
-            </div>
-            <div
-              className="flex flex-col justify-center items-center p-3 shadow-2xl"
-              /* style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }} */
-            >
-              {/* <FaLaptopCode size={50} /> */}
-
-              <img
-                className="max-h-28"
-                src="undraw_designer_life_re_6ywf.svg"
-                alt=""
-              />
-              <span>DESIGN</span>
-
-              <span>
-                Our design services focus on user experience, combining
-                aesthetics with functionality to create intuitive, visually
-                appealing digital interfaces.
-              </span>
-            </div>
-            <div className="flex flex-col justify-center items-center rounded-md p-3 shadow-2xl">
-              {/* <MdOutlineDataThresholding size={50} /> */}
-
-              <img
-                className="max-h-28"
-                src="undraw_business_plan_re_0v81.svg"
-                alt=""
-              />
-              <span>BUSINESS ANALYSIS</span>
-              <span>
-                We help businesses optimize their digital strategies by
-                analyzing data and providing actionable insights to improve
-                operational efficiency and digital transformation.
-              </span>
-            </div>
+            <img
+              className="max-h-28"
+              src="undraw_business_plan_re_0v81.svg"
+              alt=""
+            />
+            <span>BUSINESS ANALYSIS</span>
+            <span>
+              We help businesses optimize their digital strategies by analyzing
+              data and providing actionable insights to improve operational
+              efficiency and digital transformation.
+            </span>
           </div>
-          <div ref={contactRef} className="p-3">
-            Contact forma
-            <Form
-              className="flex flex-col"
-              onSubmit={handleSubmit}
-              method="POST"
-            >
-              <div className="flex gap-x-2">
-                {" "}
-                <label className="flex flex-col w-full">
-                  Name:
-                  <input
-                    className="border-solid border-2 border-slate-300"
-                    type="text"
-                    {...register("name")}
-                  />
-                  {errors.name && <p>{errors.name.message}</p>}
-                </label>
-                <label className="flex flex-col w-full">
-                  Email:
-                  <input
-                    className="border-solid border-2 border-slate-300"
-                    type="email"
-                    {...register("email")}
-                  />
-                  {errors.email && <p>{errors.email.message}</p>}
-                </label>
-              </div>
-
-              <label className="flex flex-col">
-                Query:
-                <textarea
+        </div>
+        <div ref={contactRef} className="p-3">
+          Contact forma
+          <Form className="flex flex-col" onSubmit={handleSubmit} method="POST">
+            <div className="flex flex-col gap-x-2 md:flex-row">
+              {" "}
+              <label className="flex flex-col w-full">
+                Name:
+                <input
                   className="border-solid border-2 border-slate-300"
-                  rows={4}
-                  cols={50}
-                  {...register("query")}
+                  type="text"
+                  {...register("name")}
+                />
+                {errors.name && <p>{errors.name.message}</p>}
+              </label>
+              <label className="flex flex-col w-full">
+                Email:
+                <input
+                  className="border-solid border-2 border-slate-300"
+                  type="email"
+                  {...register("email")}
                 />
                 {errors.email && <p>{errors.email.message}</p>}
               </label>
-              <button type="submit">Submit</button>
-            </Form>
-          </div>
-        </main>
-        <footer className="bg-blue-950 text-white w-full flex justify-between items-center p-3">
-          <span>G-CODE</span>
-          <span>info@g-code.com</span>
-          <span>+385993255982</span>
-          <FaFacebook />
-          <FaLinkedin />
-        </footer>
-      </div>
+            </div>
+
+            <label className="flex flex-col">
+              Query:
+              <textarea
+                className="border-solid border-2 border-slate-300"
+                rows={4}
+                cols={50}
+                {...register("query")}
+              />
+              {errors.email && <p>{errors.email.message}</p>}
+            </label>
+            <button type="submit">Submit</button>
+          </Form>
+        </div>
+      </main>
+      <footer className="bg-blue-950 text-white w-full flex justify-between items-center p-3">
+        <span>G-CODE</span>
+        <span>info@g-code.com</span>
+        <span>+385993255982</span>
+        <FaFacebook />
+        <FaLinkedin />
+      </footer>
     </div>
   );
 }
