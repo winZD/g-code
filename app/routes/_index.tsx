@@ -124,12 +124,12 @@ export default function Index() {
         </div>
         <div
           ref={aboutUsRef}
-          className="flex flex-col md:flex-row w-full shadow-md bg-blue-950 text-white"
+          className="flex flex-col md:flex-row w-full shadow-md bg-blue-950 text-white p-4"
         >
           <div className="flex flex-1 items-center justify-center font-extrabold text-4xl">
             G-CODE...its that simple
           </div>
-          <div className=" flex flex-1 items-center justify-center p-4">
+          <div className=" flex flex-1 items-center justify-center ">
             Our business specializes in developing custom web software solutions
             tailored to meet the unique needs of our clients. We combine modern
             technologies with user-friendly design to create scalable, secure,
@@ -143,9 +143,9 @@ export default function Index() {
             businesses grow in the digital space.
           </div>
         </div>
-        <div ref={servicesRef} className="grid md:grid-cols-3 gap-4 py-5">
+        <div ref={servicesRef} className="grid md:grid-cols-3 gap-4">
           {/* <div className="">SERVICES</div> */}
-          <div className="flex flex-col justify-center items-center p-3 shadow-2xl">
+          <div className="flex flex-col justify-center items-center shadow-2xl p-4">
             {/* <FaCode size={50} /> */}
 
             <img
@@ -161,7 +161,7 @@ export default function Index() {
             </span>
           </div>
           <div
-            className="flex flex-col justify-center items-center p-3 shadow-2xl"
+            className="flex flex-col justify-center items-center p-4 shadow-2xl"
             /* style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }} */
           >
             {/* <FaLaptopCode size={50} /> */}
@@ -179,7 +179,7 @@ export default function Index() {
               interfaces.
             </span>
           </div>
-          <div className="flex flex-col justify-center items-center rounded-md p-3 shadow-2xl">
+          <div className="flex flex-col justify-center items-center rounded-md p-4 shadow-2xl">
             {/* <MdOutlineDataThresholding size={50} /> */}
 
             <img
@@ -195,7 +195,7 @@ export default function Index() {
             </span>
           </div>
         </div>
-        <div ref={contactRef} className="p-3">
+        <div ref={contactRef} className="p-4">
           Contact forma
           <Form className="flex flex-col" onSubmit={handleSubmit} method="POST">
             <div className="flex flex-col gap-x-2 md:flex-row">
@@ -234,7 +234,7 @@ export default function Index() {
           </Form>
         </div>
       </main>
-      <footer className=" flex flex-col md:flex-row bg-blue-950 text-white w-full flex justify-between items-center p-3">
+      <footer className=" flex flex-col gap-y-3 md:flex-row bg-blue-950 text-white w-full justify-between items-center p-3">
         <span>G-CODE</span>
         <span>info@g-code.com</span>
         <span>+385993255982</span>
