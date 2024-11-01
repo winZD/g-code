@@ -68,8 +68,8 @@ export default function Index() {
 
   return (
     <div className="flex flex-col h-screen ">
-      <header className="flex gap-9 w-full p-3 justify-between text-center items-center bg-white fixed top-0">
-        <h1 className="leading text-2xl font-bold text-gray-800 ">
+      <header className="flex gap-9 w-full p-3 justify-between items-center bg-white fixed top-0">
+        <h1 className="leading text-2xl font-bold text-gray-800">
           {/* dark:text-gray-100 */}
           G-CODE <span className="sr-only">G-CODE</span>
         </h1>
@@ -125,10 +125,10 @@ export default function Index() {
       >
         {/*  <Outlet /> */}
         <div
-          className="flex flex-col h-96 w-full bg-cover bg-center items-center justify-center text-white "
+          className="flex flex-col h-96 w-full bg-cover bg-center items-center justify-center text-center text-white "
           style={{ backgroundImage: "url('/laptop-cool.jpg')" }}
         >
-          <h1 className="text-3xl font-bold ">YOUR BEST DIGITAL PARTNER</h1>
+          <h1 className="text-3xl font-bold mb-1">YOUR BEST DIGITAL PARTNER</h1>
           <button
             className="font-semibold rounded transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5 "
             onClick={scrollToContact}
