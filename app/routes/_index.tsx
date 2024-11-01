@@ -67,9 +67,10 @@ export default function Index() {
   };
 
   return (
-    <div className="flex flex-col h-screen text-black">
+    <div className="flex flex-col h-screen ">
       <header className="flex gap-9 w-full p-3 justify-between items-center bg-white fixed top-0">
-        <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
+        <h1 className="leading text-2xl font-bold text-gray-800 ">
+          {/* dark:text-gray-100 */}
           G-CODE <span className="sr-only">G-CODE</span>
         </h1>
         <div className="flex md:hidden">
