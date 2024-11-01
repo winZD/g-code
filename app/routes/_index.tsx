@@ -87,10 +87,25 @@ export default function Index() {
                   </button> */}
               </div>
 
-              <div className="flex flex-col gap-x-2 justify-center items-center">
-                <button onClick={scrollToAboutUs}>ABOUT</button>
-                <button onClick={scrollToServices}>SERVICES</button>
-                <button onClick={scrollToContact}>CONTACT</button>
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <button
+                  className="hover:bg-slate-100 w-full"
+                  onClick={scrollToAboutUs}
+                >
+                  ABOUT
+                </button>
+                <button
+                  className="hover:bg-slate-100 w-full"
+                  onClick={scrollToServices}
+                >
+                  SERVICES
+                </button>
+                <button
+                  className="hover:bg-slate-100 w-full"
+                  onClick={scrollToContact}
+                >
+                  CONTACT
+                </button>
               </div>
             </div>
           )}
@@ -120,7 +135,6 @@ export default function Index() {
           >
             Contact
           </button>
-          {/*    <img className="" src="laptop-cool.jpg" alt="code" /> */}
         </div>
         <div
           ref={aboutUsRef}
@@ -144,10 +158,7 @@ export default function Index() {
           </div>
         </div>
         <div ref={servicesRef} className="grid md:grid-cols-3 gap-4">
-          {/* <div className="">SERVICES</div> */}
           <div className="flex flex-col justify-center items-center shadow-2xl p-4">
-            {/* <FaCode size={50} /> */}
-
             <img
               className="max-h-28"
               src="undraw_progressive_app_m-9-ms.svg"
@@ -236,8 +247,8 @@ export default function Index() {
       </main>
       <footer className=" flex flex-col gap-y-3 md:flex-row bg-blue-950 text-white w-full justify-between items-center p-3">
         <span>G-CODE</span>
-        <span>info@g-code.com</span>
-        <span>+385993255982</span>
+        <span>E-mail: info@g-code.com</span>
+        <span>Phone: +385993255982</span>
         <FaFacebook />
         <FaLinkedin />
       </footer>
