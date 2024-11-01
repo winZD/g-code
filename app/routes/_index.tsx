@@ -1,25 +1,13 @@
 import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 import { useRef, useState } from "react";
-import { BsPencilSquare } from "react-icons/bs";
-import {
-  FaBusinessTime,
-  FaCode,
-  FaFacebook,
-  FaHamburger,
-  FaLaptopCode,
-  FaLinkedin,
-} from "react-icons/fa";
-import { IoMdSettings } from "react-icons/io";
+
+import { FaFacebook, FaHamburger, FaLinkedin } from "react-icons/fa";
+
 import { getValidatedFormData, useRemixForm } from "remix-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  MdDisplaySettings,
-  MdOutlineAnalytics,
-  MdOutlineDataThresholding,
-  MdVideoSettings,
-} from "react-icons/md";
+
 import { FaX } from "react-icons/fa6";
 
 export const meta: MetaFunction = () => {
@@ -256,7 +244,7 @@ export default function Index() {
   );
 }
 
-const resources = [
+/* const resources = [
   {
     href: "https://remix.run/start/quickstart",
     text: "Quick Start (5 min)",
@@ -339,3 +327,4 @@ const resources = [
     ),
   },
 ];
+ */
