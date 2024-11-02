@@ -209,13 +209,17 @@ export default function Index() {
         </div>
         <div ref={contactRef} className="p-4">
           Contact forma
-          <Form className="flex flex-col" onSubmit={handleSubmit} method="POST">
+          <Form
+            className="flex flex-col gap-3"
+            onSubmit={handleSubmit}
+            method="POST"
+          >
             <div className="flex flex-col gap-x-2 md:flex-row">
               {" "}
               <label className="flex flex-col w-full">
                 Name:
                 <input
-                  className="border-solid border-2 border-slate-300"
+                  className="border-solid border-2 border-slate-300 rounded-md"
                   type="text"
                   {...register("name")}
                 />
@@ -224,7 +228,7 @@ export default function Index() {
               <label className="flex flex-col w-full">
                 Email:
                 <input
-                  className="border-solid border-2 border-slate-300"
+                  className="border-solid border-2 border-slate-300 rounded-md"
                   type="email"
                   {...register("email")}
                 />
@@ -235,14 +239,19 @@ export default function Index() {
             <label className="flex flex-col">
               Query:
               <textarea
-                className="border-solid border-2 border-slate-300"
+                className="border-solid border-2 border-slate-300 rounded-md"
                 rows={4}
                 cols={50}
                 {...register("query")}
               />
               {errors.email && <p>{errors.email.message}</p>}
             </label>
-            <button type="submit">Submit</button>
+            <button
+              className="bg-slate-200 p-1 hover:bg-slate-300 rounded-md"
+              type="submit"
+            >
+              Submit
+            </button>
           </Form>
         </div>
       </main>
