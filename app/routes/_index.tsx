@@ -130,7 +130,7 @@ export default function Index() {
         >
           <h1 className="text-3xl font-bold mb-1">YOUR BEST DIGITAL PARTNER</h1>
           <button
-            className="font-semibold rounded transition ease-in-out delay-150 bg-blue-950 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5 "
+            className="border-white border-solid border-2 font-semibold rounded transition ease-in-out delay-150 bg-blue-950 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5 "
             onClick={scrollToContact}
           >
             Contact
