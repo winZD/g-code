@@ -1,9 +1,8 @@
 import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 import { useRef, useState } from "react";
-
 import { FaFacebook, FaHamburger, FaLinkedin } from "react-icons/fa";
-
+import nodemailer from "nodemailer";
 import { getValidatedFormData, useRemixForm } from "remix-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,7 +19,7 @@ export const meta: MetaFunction = () => {
 const schema = zod.object({
   name: zod.string().min(1),
   email: zod.string().email().min(1),
-  query: zod.string().email().min(1),
+  query: zod.string().min(1),
 });
 
 type FormData = zod.infer<typeof schema>;
@@ -53,7 +52,7 @@ export default function Index() {
     register,
   } = useRemixForm<FormData>({
     mode: "onSubmit",
-    /* resolver, */
+    resolver,
   });
 
   const scrollToContact = () => {
@@ -244,7 +243,7 @@ export default function Index() {
                 cols={50}
                 {...register("query")}
               />
-              {errors.email && <p>{errors.email.message}</p>}
+              {errors.email && <p>{errors.query?.message}</p>}
             </label>
             <button
               className="bg-slate-200 p-1 hover:bg-slate-300 rounded-md"
