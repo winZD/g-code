@@ -87,7 +87,7 @@ export default function Index() {
                   </button> */}
               </div>
 
-              <div className="flex flex-col gap-2 justify-center items-center">
+              <div className="flex flex-col gap-2 justify-center items-center font-semibold">
                 <button
                   className="hover:bg-slate-100 w-full"
                   onClick={scrollToAboutUs}
@@ -110,7 +110,7 @@ export default function Index() {
             </div>
           )}
         </div>
-        <div className="md:flex justify-center items-center gap-x-3 hidden">
+        <div className="md:flex justify-center items-center gap-x-3 hidden font-semibold">
           <button onClick={scrollToAboutUs}>ABOUT</button>
           <button onClick={scrollToServices}>SERVICES</button>
           <button onClick={scrollToContact}>CONTACT</button>
