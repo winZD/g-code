@@ -162,13 +162,14 @@ export default function Index() {
           </div>
         </div>
         <div ref={servicesRef} className="grid md:grid-cols-3 gap-4">
-          <div className="flex flex-col justify-center items-center shadow-2xl p-4">
+          <div className="flex flex-col justify-center gap-5 items-center shadow-2xl p-4">
+            <span className="text-3xl font-bold">DEVELOPMENT</span>
             <img
               className="max-h-28"
               src="undraw_progressive_app_m-9-ms.svg"
               alt=""
             />
-            <span>DEVELOPMENT</span>
+
             <span>
               We create custom, high-performance web applications tailored to
               meet specific client needs, using modern technologies and ensuring
@@ -176,33 +177,29 @@ export default function Index() {
             </span>
           </div>
           <div
-            className="flex flex-col justify-center items-center p-4 shadow-2xl"
+            className="flex flex-col justify-center gap-5 items-center p-4 shadow-2xl"
             /* style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }} */
           >
             {/* <FaLaptopCode size={50} /> */}
+            <span className="text-3xl font-bold">DESIGN</span>
 
-            <img
-              className="max-h-28"
-              src="undraw_designer_life_re_6ywf.svg"
-              alt=""
-            />
-            <span>DESIGN</span>
+            <img className="max-h-28" src="undraw_design_process.svg" alt="" />
 
             <span>
               Our design services focus on user experience, combining aesthetics
               with functionality to create intuitive, visually appealing digital
-              interfaces.
+              interfaces that drive engagement and enhance user satisfaction.
             </span>
           </div>
-          <div className="flex flex-col justify-center items-center rounded-md p-4 shadow-2xl">
+          <div className="flex flex-col justify-center gap-5 items-center rounded-md p-4 shadow-2xl">
             {/* <MdOutlineDataThresholding size={50} /> */}
-
+            <span className="text-3xl font-bold">BUSINESS ANALYSIS</span>
             <img
               className="max-h-28"
               src="undraw_business_plan_re_0v81.svg"
               alt=""
             />
-            <span>BUSINESS ANALYSIS</span>
+
             <span>
               We help businesses optimize their digital strategies by analyzing
               data and providing actionable insights to improve operational
