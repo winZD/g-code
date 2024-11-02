@@ -130,7 +130,7 @@ export default function Index() {
         >
           <h1 className="text-3xl font-bold mb-1">YOUR BEST DIGITAL PARTNER</h1>
           <button
-            className="font-semibold rounded transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5 "
+            className="font-semibold rounded transition ease-in-out delay-150 bg-blue-950 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5 "
             onClick={scrollToContact}
           >
             Contact
@@ -138,7 +138,7 @@ export default function Index() {
         </div>
         <div
           ref={aboutUsRef}
-          className="flex flex-col md:flex-row w-full shadow-md bg-blue-950 text-white p-4"
+          className="flex flex-col gap-3 md:flex-row w-full shadow-md bg-blue-950 text-white p-4"
         >
           <div className="flex flex-1 items-center justify-center font-extrabold text-4xl">
             G-CODE...its that simple
@@ -147,14 +147,18 @@ export default function Index() {
             Our business specializes in developing custom web software solutions
             tailored to meet the unique needs of our clients. We combine modern
             technologies with user-friendly design to create scalable, secure,
-            and high-performance web applications. From e-commerce platforms to
-            enterprise management systems, we deliver solutions that streamline
-            operations and drive digital transformation. Our team of expert
-            developers is dedicated to ensuring each project is delivered on
-            time and exceeds expectations. We focus on understanding our clients
-            goals to provide innovative solutions that enhance their online
-            presence. With a commitment to quality and ongoing support, we help
-            businesses grow in the digital space.
+            and high-performance web applications.
+            <br />
+            <br /> From e-commerce platforms to enterprise management systems,
+            we deliver solutions that streamline operations and drive digital
+            transformation. Our team of expert developers is dedicated to
+            ensuring each project is delivered on time and exceeds expectations.
+            <br />
+            <br />
+            We focus on understanding our clients goals to provide innovative
+            solutions that enhance their online presence. With a commitment to
+            quality and ongoing support, we help businesses grow in the digital
+            space.
           </div>
         </div>
         <div ref={servicesRef} className="grid md:grid-cols-3 gap-4">
