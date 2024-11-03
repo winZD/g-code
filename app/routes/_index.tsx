@@ -2,7 +2,7 @@ import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 import { useRef, useState } from "react";
 import { FaFacebook, FaHamburger, FaLinkedin } from "react-icons/fa";
-import nodemailer from "nodemailer";
+import { createTransport } from "nodemailer";
 import { getValidatedFormData, useRemixForm } from "remix-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,10 +31,47 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     data,
     receivedValues: defaultValues,
   } = await getValidatedFormData<FormData>(request, resolver);
+
   if (errors) {
     // The keys "errors" and "defaultValues" are picked up automatically by useRemixForm
     return json({ errors, defaultValues });
   }
+  // Create a transporter object using Gmail SMTP
+  const transporter = createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+    tls: {
+      rejectUnauthorized: false, // This disables strict SSL validation
+    },
+  });
+
+  // Email options
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: "puntica007@gmail.com",
+
+    subject: "👋 Hello from Node.js 🚀",
+    text: `
+      You have a new contact form submission!
+
+      Name: ${data.name}
+      Email: ${data.email}
+      Query: ${data.query}
+    `,
+  };
+
+  console.log(mailOptions);
+  // Send the email
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("❌ Error:", error.message);
+    } else {
+      console.log("✅ Email sent:", info.response);
+    }
+  });
 
   // Do something with the data
   return json(data);
