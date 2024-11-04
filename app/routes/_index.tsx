@@ -40,15 +40,15 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const transporter = createTransport({
     service: "Gmail",
     host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD,
     },
-    /*     tls: {
+    tls: {
       rejectUnauthorized: false, // This disables strict SSL validation
-    }, */
+    },
   });
 
   // Email options
