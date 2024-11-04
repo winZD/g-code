@@ -38,14 +38,17 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   }
   // Create a transporter object using Gmail SMTP
   const transporter = createTransport({
-    service: "gmail",
+    service: "Gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD,
     },
-    tls: {
+    /*     tls: {
       rejectUnauthorized: false, // This disables strict SSL validation
-    },
+    }, */
   });
 
   // Email options
