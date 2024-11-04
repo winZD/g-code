@@ -40,8 +40,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const transporter = createTransport({
     service: "Gmail",
     host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD,
