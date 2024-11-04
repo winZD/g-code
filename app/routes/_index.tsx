@@ -38,7 +38,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   }
   // Create a transporter object using Gmail SMTP
   const transporter = createTransport({
-    service: "Gmail",
     host: "smtp.gmail.com",
     port: 465,
     secure: true,
