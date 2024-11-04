@@ -64,8 +64,11 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   };
 
   console.log(mailOptions);
+  console.log("EMAIL_USER:", process.env.EMAIL_USER);
+  console.log("EMAIL_PASSWORD:", process.env.EMAIL_PASSWORD);
+
   // Send the email
-  transporter.sendMail(mailOptions, (error, info) => {
+  await transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error("❌ Error:", error.message);
     } else {
