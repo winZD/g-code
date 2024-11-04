@@ -40,8 +40,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const transporter = createTransport({
     service: "gmail",
     auth: {
-      user: "puntica007@gmail.com",
-      pass: "mlywijggpoelyiqo",
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
     },
     tls: {
       rejectUnauthorized: false, // This disables strict SSL validation
@@ -50,7 +50,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   // Email options
   const mailOptions = {
-    from: "puntica007@gmail.com",
+    from: process.env.EMAIL_USER,
     to: "puntica007@gmail.com",
 
     subject: "👋 Hello from Node.js 🚀",
