@@ -15,9 +15,9 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD,
   },
-  tls: {
+  /*   tls: {
     rejectUnauthorized: false, // Disable strict SSL validation
-  },
+  }, */
 });
 
 // Function to send an email
