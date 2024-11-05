@@ -2,12 +2,13 @@ import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 import { useRef, useState } from "react";
 import { FaFacebook, FaHamburger, FaLinkedin } from "react-icons/fa";
-import { createTransport } from "nodemailer";
+
 import { getValidatedFormData, useRemixForm } from "remix-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { FaX } from "react-icons/fa6";
+import { sendEmail } from "~/utils/sendMail";
 
 export const meta: MetaFunction = () => {
   return [
@@ -36,7 +37,14 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     // The keys "errors" and "defaultValues" are picked up automatically by useRemixForm
     return json({ errors, defaultValues });
   }
-  // Create a transporter object using Gmail SMTP
+
+  await sendEmail({
+    to: "puntica007@gmail.com",
+    name: data.name,
+    email: data.email,
+    query: data.query,
+  });
+  /*  // Create a transporter object using Gmail SMTP
   const transporter = createTransport({
     service: "gmail",
     auth: {
@@ -74,7 +82,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     } else {
       console.log("✅ Email sent:", info.response);
     }
-  });
+  }); */
 
   // Do something with the data
   return json(data);
