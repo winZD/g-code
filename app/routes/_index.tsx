@@ -44,45 +44,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     email: data.email,
     query: data.query,
   });
-  /*  // Create a transporter object using Gmail SMTP
-  const transporter = createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD,
-    },
-    tls: {
-      rejectUnauthorized: false, // This disables strict SSL validation
-    },
-  });
-
-  // Email options
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: "puntica007@gmail.com",
-
-    subject: "👋 Hello from Node.js 🚀",
-    text: `
-      You have a new contact form submission!
-
-      Name: ${data.name}
-      Email: ${data.email}
-      Query: ${data.query}
-    `,
-  };
-
-  console.log(mailOptions);
-  console.log("EMAIL_USER:", process.env.EMAIL_USER);
-  console.log("EMAIL_PASSWORD:", process.env.EMAIL_PASSWORD);
-
-  // Send the email
-  await transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error("❌ Error:", error.message);
-    } else {
-      console.log("✅ Email sent:", info.response);
-    }
-  }); */
 
   // Do something with the data
   return json(data);
