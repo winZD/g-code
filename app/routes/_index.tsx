@@ -78,9 +78,11 @@ export default function Index() {
     <div className="flex flex-col h-screen ">
       <header className="flex gap-9 w-full p-3 justify-between items-center bg-white fixed top-0">
         <h1 className="leading text-2xl font-bold text-gray-800">
-          {/* dark:text-gray-100 */}
+          {/*    dark:text-gray-100 */}
           G-CODE <span className="sr-only">G-CODE</span>
         </h1>
+        {/*         <img src="g-code-logo.png" alt="" className="h-10 w-20" />
+         */}{" "}
         <div className="flex md:hidden">
           {
             <button onClick={() => setOpen(!open)}>
@@ -146,32 +148,40 @@ export default function Index() {
         </div>
         <div
           ref={aboutUsRef}
-          className="flex flex-col gap-3 md:flex-row w-full shadow-md bg-blue-950 text-white p-4"
+          className="flex flex-col gap-3 md:flex-row w-full shadow-md bg-blue-950 text-slate-300 p-4"
         >
           <div className="flex flex-1 items-center justify-center font-extrabold text-4xl">
-            G-CODE...its that simple
+            {"G-CODE...it's that simple"}
           </div>
           {/* add span element and make gap y to 4rem*/}
-          <div className="flex flex-1 items-center justify-center ">
-            Our business specializes in developing custom web software solutions
-            tailored to meet the unique needs of our clients. We combine modern
-            technologies with user-friendly design to create scalable, secure,
-            and high-performance web applications.
-            <br />
-            <br />
-            From e-commerce platforms to enterprise management systems, we
-            deliver solutions that streamline operations and drive digital
-            transformation. Our team of expert developers is dedicated to
-            ensuring each project is delivered on time and exceeds expectations.
-            <br />
-            <br />
-            We focus on understanding our clients goals to provide innovative
-            solutions that enhance their online presence. With a commitment to
-            quality and ongoing support, we help businesses grow in the digital
-            space.
+          <div className="flex flex-col flex-1 items-center justify-center gap-y-5 ">
+            <span>
+              Our business specializes in developing custom web software
+              solutions tailored to meet the unique needs of our clients. We
+              combine modern technologies with user-friendly design to create
+              scalable, secure, and high-performance web applications.
+            </span>
+            <span>
+              {" "}
+              From e-commerce platforms to enterprise management systems, we
+              deliver solutions that streamline operations and drive digital
+              transformation. Our team of expert developers is dedicated to
+              ensuring each project is delivered on time and exceeds
+              expectations.
+            </span>
+
+            <span>
+              We focus on understanding our clients goals to provide innovative
+              solutions that enhance their online presence. With a commitment to
+              quality and ongoing support, we help businesses grow in the
+              digital space.
+            </span>
           </div>
         </div>
-        <div ref={servicesRef} className="grid md:grid-cols-3 gap-4">
+        <div
+          ref={servicesRef}
+          className="grid md:grid-cols-3 gap-4 text-slate-600"
+        >
           <div className="flex flex-col justify-center gap-5 items-center shadow-2xl p-4">
             <span className="text-3xl font-bold">DEVELOPMENT</span>
             <img
@@ -218,14 +228,22 @@ export default function Index() {
           </div>
         </div>
         <div ref={contactRef} className="flex flex-col md:flex-row p-4 gap-4">
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col gap-y-5 text-slate-600">
             <span className="text-3xl font-bold">
-              {" "}
               {"Get in Touch with G-CODE"}
             </span>
-            {
-              "Whether you're looking to transform your business with innovative tech solutions or have questions about our services, we're here to help. Reach out to our team, and let’s make IT simple together. Fill out the form below with your details, and we’ll get back to you promptly to discuss your needs. We’re excited to connect and support your tech journey!"
-            }
+            <span>
+              {
+                "Whether you're looking to transform your business with innovative tech solutions or have questions about our services, we're here to help."
+              }
+            </span>
+
+            <span>
+              {
+                " Reach out to our team, and let’s make IT simple together. Fill out the form below with your details, and we’ll get back to you promptly to discuss your needs. We’re excited to connect and support your tech journey!"
+              }
+            </span>
+            <span></span>
             <img
               className="h-96"
               src="undraw_business_deal_re_up4u.svg"
@@ -240,8 +258,8 @@ export default function Index() {
           >
             <div className="flex flex-col gap-x-2 md:flex-row">
               {" "}
-              <label className="flex flex-col w-full">
-                Name:
+              <label className="flex flex-col w-full font-bold">
+                Name
                 <input
                   className="border-solid border-2 border-slate-300 rounded-md"
                   type="text"
@@ -250,7 +268,7 @@ export default function Index() {
                 {errors.name && <p>{errors.name.message}</p>}
               </label>
               <label className="flex flex-col w-full">
-                Email:
+                Email
                 <input
                   className="border-solid border-2 border-slate-300 rounded-md"
                   type="email"
