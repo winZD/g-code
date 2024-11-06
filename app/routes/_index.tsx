@@ -151,14 +151,16 @@ export default function Index() {
           <div className="flex flex-1 items-center justify-center font-extrabold text-4xl">
             G-CODE...its that simple
           </div>
-          <div className=" flex flex-1 items-center justify-center ">
+          {/* add span element and make gap y to 4rem*/}
+          <div className="flex flex-1 items-center justify-center ">
             Our business specializes in developing custom web software solutions
             tailored to meet the unique needs of our clients. We combine modern
             technologies with user-friendly design to create scalable, secure,
             and high-performance web applications.
             <br />
-            <br /> From e-commerce platforms to enterprise management systems,
-            we deliver solutions that streamline operations and drive digital
+            <br />
+            From e-commerce platforms to enterprise management systems, we
+            deliver solutions that streamline operations and drive digital
             transformation. Our team of expert developers is dedicated to
             ensuring each project is delivered on time and exceeds expectations.
             <br />
@@ -215,10 +217,24 @@ export default function Index() {
             </span>
           </div>
         </div>
-        <div ref={contactRef} className="p-4">
-          Contact forma
+        <div ref={contactRef} className="flex flex-col md:flex-row p-4 gap-4">
+          <div className="flex-1 flex flex-col">
+            <span className="text-3xl font-bold">
+              {" "}
+              {"Get in Touch with G-CODE"}
+            </span>
+            {
+              "Whether you're looking to transform your business with innovative tech solutions or have questions about our services, we're here to help. Reach out to our team, and let’s make IT simple together. Fill out the form below with your details, and we’ll get back to you promptly to discuss your needs. We’re excited to connect and support your tech journey!"
+            }
+            <img
+              className="h-96"
+              src="undraw_business_deal_re_up4u.svg"
+              alt=""
+            />
+            <span> </span>
+          </div>
           <Form
-            className="flex flex-col gap-3"
+            className="flex flex-1 flex-col gap-3"
             onSubmit={handleSubmit}
             method="POST"
           >
@@ -244,11 +260,11 @@ export default function Index() {
               </label>
             </div>
 
-            <label className="flex flex-col">
+            <label className="flex flex-col h-full">
               Query:
               <textarea
-                className="border-solid border-2 border-slate-300 rounded-md"
-                rows={4}
+                className="border-solid border-2 border-slate-300 rounded-md h-full"
+                /*  rows={8} */
                 cols={50}
                 {...register("query")}
               />
