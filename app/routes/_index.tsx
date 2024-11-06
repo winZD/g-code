@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { FaX } from "react-icons/fa6";
 import { sendEmail } from "~/utils/sendMail";
+import { jsonWithSuccess } from "remix-toast";
 
 export const meta: MetaFunction = () => {
   return [
@@ -46,7 +47,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   });
 
   // Do something with the data
-  return json(data);
+  /*  return json(data); */
+  return jsonWithSuccess(data, "You secessfully submited e-mail!");
 };
 
 export default function Index() {
