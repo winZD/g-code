@@ -48,7 +48,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   // Do something with the data
   /*  return json(data); */
-  return jsonWithSuccess(data, "You secessfully submited e-mail!");
+  return jsonWithSuccess(data, "You sucessfully submited e-mail!");
 };
 
 export default function Index() {

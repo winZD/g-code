@@ -1,13 +1,27 @@
 import {
+  json,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
+import { ToastContainer, toast as notify } from "react-toastify";
 
+import { LoaderFunctionArgs } from "@remix-run/node";
+import { getToast } from "remix-toast";
+import { useEffect } from "react";
+import "react-toastify/dist/ReactToastify.css";
 import "./tailwind.css";
+
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  // Extracts the toast from the request
+  const { toast, headers } = await getToast(request);
+  // Important to pass in the headers so the toast is cleared properly
+  return json({ toast }, { headers });
+};
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -23,6 +37,14 @@ export const links: LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { toast } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (toast) {
+      // notify on a toast message
+      notify(toast.message, { type: toast.type });
+    }
+  }, [toast]);
   return (
     <html lang="en">
       <head>
@@ -35,6 +57,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <ToastContainer />
       </body>
     </html>
   );
