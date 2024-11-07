@@ -48,15 +48,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
         <script
           id="cookieyes"
           type="text/javascript"
           src="https://cdn-cookieyes.com/client_data/f7f7dff8effb551a9942ac4e/script.js"
         ></script>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
       </head>
       <body>
         {children}
