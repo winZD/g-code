@@ -301,7 +301,7 @@ export default function Index() {
       </main>
       <footer className=" flex flex-col gap-y-3 md:flex-row bg-blue-950 text-white w-full justify-between items-center p-3">
         <span>G-CODE</span>
-        <span>E-mail: info@g-code.com</span>
+        {/* <span>E-mail: info@g-code.com</span> */}
         <span>Phone: +385993255982</span>
         <FaFacebook />
         <FaLinkedin />
