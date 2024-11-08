@@ -227,7 +227,7 @@ export default function Index() {
           </div>
         </div>
         <div ref={contactRef} className="flex flex-col md:flex-row p-4 gap-4">
-          <div className="flex-1 flex flex-col gap-y-5 text-slate-600">
+          <div className="flex-1 flex flex-col gap-y-5 text-slate-600 ">
             <span className="text-3xl font-bold">
               {"Get in Touch with G-CODE"}
             </span>
@@ -242,13 +242,12 @@ export default function Index() {
                 " Reach out to our team, and let’s make IT simple together. Fill out the form below with your details, and we’ll get back to you promptly to discuss your needs. We’re excited to connect and support your tech journey!"
               }
             </span>
-            <span></span>
+
             <img
-              className="h-96"
+              className="h-60"
               src="undraw_business_deal_re_up4u.svg"
               alt=""
             />
-            <span> </span>
           </div>
           <Form
             className="flex flex-1 flex-col gap-3"
