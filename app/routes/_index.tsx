@@ -136,7 +136,7 @@ export default function Index() {
         /*  style={{ backgroundColor: "#121b21" }} */
       >
         {/*  <Outlet /> */}
-        <div className="flex flex-col bg-[url('/laptop-cool.jpg')] h-96 w-full bg-cover bg-center items-center justify-center text-center text-white ">
+        <div className="flex flex-col bg-[url('/tech.jpg')] h-96 w-full bg-cover bg-center items-center justify-center text-center text-white ">
           <h1 className="text-3xl font-bold mb-1">YOUR BEST DIGITAL PARTNER</h1>
           <button
             className="border-white border-solid border-2 font-semibold rounded transition ease-in-out delay-150 bg-blue-950 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5 "
@@ -257,14 +257,16 @@ export default function Index() {
           >
             <div className="flex flex-col gap-x-2 md:flex-row">
               {" "}
-              <label className="flex flex-col w-full font-bold">
+              <label className="flex flex-col w-full">
                 Name
                 <input
                   className="border-solid border-2 border-slate-300 rounded-md"
                   type="text"
                   {...register("name")}
                 />
-                {errors.name && <p>{errors.name.message}</p>}
+                {errors.name && (
+                  <p className="text-red-700">{errors.name.message}</p>
+                )}
               </label>
               <label className="flex flex-col w-full">
                 Email
@@ -273,7 +275,9 @@ export default function Index() {
                   type="email"
                   {...register("email")}
                 />
-                {errors.email && <p>{errors.email.message}</p>}
+                {errors.email && (
+                  <p className="text-red-700">{errors.email.message}</p>
+                )}
               </label>
             </div>
 
@@ -285,7 +289,9 @@ export default function Index() {
                 cols={50}
                 {...register("query")}
               />
-              {errors.email && <p>{errors.query?.message}</p>}
+              {errors.email && (
+                <p className="text-red-700">{errors.query?.message}</p>
+              )}
             </label>
             <button
               className="bg-slate-200 p-1 hover:bg-slate-300 rounded-md"
