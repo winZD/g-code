@@ -136,7 +136,7 @@ export default function Index() {
         /*  style={{ backgroundColor: "#121b21" }} */
       >
         {/*  <Outlet /> */}
-        <div className="flex flex-col bg-[url('/laptop-cool.jpg')] w-full bg-cover bg-center items-center justify-center text-center text-white ">
+        <div className="flex flex-col bg-[url('/laptop-cool.jpg')] h-96 w-full bg-cover bg-center items-center justify-center text-center text-white ">
           <h1 className="text-3xl font-bold mb-1">YOUR BEST DIGITAL PARTNER</h1>
           <button
             className="border-white border-solid border-2 font-semibold rounded transition ease-in-out delay-150 bg-blue-950 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5 "
