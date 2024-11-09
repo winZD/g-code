@@ -77,61 +77,64 @@ export default function Index() {
   };
 
   return (
-    <div className="flex flex-col h-screen ">
-      <header className="flex gap-9 w-full p-3 justify-between items-center bg-white fixed top-0">
-        <h1 className="leading text-2xl font-bold text-gray-800">
-          {/*    dark:text-gray-100 */}
-          G-CODE <span className="sr-only">G-CODE</span>
-        </h1>
-        {/*         <img src="g-code-logo.png" alt="" className="h-10 w-20" />
-         */}{" "}
-        <div className="flex md:hidden">
-          {
-            <button onClick={() => setOpen(!open)}>
-              {open ? <FaX size={25} /> : <FaHamburger size={25} />}
-            </button>
-          }
-          {open && (
-            <div className="flex flex-col w-full backdrop-blur absolute top-10 right-0 bg-white">
-              <div className="flex justify-end">
-                {/*  <button onClick={() => setOpen(false)} className="p-3">
+    <div className="flex flex-col h-screen items-center">
+      <header className="bg-white fixed top-0 w-full ">
+        <div className="flex gap-9 max-w-[1440px] p-3 justify-between mx-auto">
+          {" "}
+          <h1 className="leading text-2xl font-bold text-gray-800">
+            {/*    dark:text-gray-100 */}
+            G-CODE <span className="sr-only">G-CODE</span>
+          </h1>
+          {/*         <img src="g-code-logo.png" alt="" className="h-10 w-20" />
+           */}{" "}
+          <div className="flex md:hidden">
+            {
+              <button onClick={() => setOpen(!open)}>
+                {open ? <FaX size={25} /> : <FaHamburger size={25} />}
+              </button>
+            }
+            {open && (
+              <div className="flex flex-col w-full absolute top-10 right-0 bg-white">
+                <div className="flex justify-end">
+                  {/*  <button onClick={() => setOpen(false)} className="p-3">
                     <FaX size={25} />
                   </button> */}
-              </div>
+                </div>
 
-              <div className="flex flex-col gap-2 justify-center items-center font-semibold">
-                <button
-                  className="hover:bg-slate-100 w-full"
-                  onClick={scrollToAboutUs}
-                >
-                  ABOUT
-                </button>
-                <button
-                  className="hover:bg-slate-100 w-full"
-                  onClick={scrollToServices}
-                >
-                  SERVICES
-                </button>
-                <button
-                  className="hover:bg-slate-100 w-full"
-                  onClick={scrollToContact}
-                >
-                  CONTACT
-                </button>
+                <div className="flex flex-col gap-2 justify-center items-center font-semibold">
+                  <button
+                    className="hover:bg-slate-100 w-full"
+                    onClick={scrollToAboutUs}
+                  >
+                    ABOUT
+                  </button>
+                  <button
+                    className="hover:bg-slate-100 w-full"
+                    onClick={scrollToServices}
+                  >
+                    SERVICES
+                  </button>
+                  <button
+                    className="hover:bg-slate-100 w-full"
+                    onClick={scrollToContact}
+                  >
+                    CONTACT
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-        <div className="md:flex justify-center items-center gap-x-3 hidden font-semibold">
-          <button onClick={scrollToAboutUs}>ABOUT</button>
-          <button onClick={scrollToServices}>SERVICES</button>
-          <button onClick={scrollToContact}>CONTACT</button>
-          {/*    <img src="cro-flag.svg" alt="" />
+            )}
+          </div>
+          <div className="md:flex justify-center items-center gap-x-3 hidden font-semibold">
+            <button onClick={scrollToAboutUs}>ABOUT</button>
+            <button onClick={scrollToServices}>SERVICES</button>
+            <button onClick={scrollToContact}>CONTACT</button>
+            {/*    <img src="cro-flag.svg" alt="" />
           <img src="us-flag.svg" alt="" /> */}
+          </div>
         </div>
       </header>
 
-      <main className="flex flex-col w-full grow bg-gray-100 ">
+      <main className="flex flex-col max-w-[1440px] grow bg-gray-100 ">
         <div className="flex flex-col bg-[url('/tech.jpg')] h-96 w-full bg-cover bg-center items-center justify-center text-center text-white ">
           <h1 className="text-3xl font-bold mb-1">YOUR BEST DIGITAL PARTNER</h1>
           <button
@@ -291,12 +294,14 @@ export default function Index() {
           </Form>
         </div>
       </main>
-      <footer className=" flex flex-col gap-y-3 md:flex-row bg-blue-950 text-white w-full justify-between items-center p-3">
-        <span>G-CODE</span>
-        {/* <span>E-mail: info@g-code.com</span> */}
-        <span>Phone: +385993255982</span>
-        <FaFacebook />
-        <FaLinkedin />
+      <footer className="bg-blue-950 text-white w-full ">
+        <div className="flex flex-col gap-y-3 md:flex-row max-w-[1440px] justify-between mx-auto p-3">
+          <span>G-CODE</span>
+          {/* <span>E-mail: info@g-code.com</span> */}
+          <span>Phone: +385993255982</span>
+          <FaFacebook />
+          <FaLinkedin />
+        </div>
       </footer>
     </div>
   );
