@@ -295,7 +295,7 @@ export default function Index() {
         </div>
       </main>
       <footer className="bg-blue-950 text-white w-full ">
-        <div className="flex flex-col gap-y-3 md:flex-row max-w-[1440px] justify-between mx-auto p-3">
+        <div className="flex flex-col gap-y-3 md:flex-row max-w-[1440px] justify-between items-center mx-auto p-3">
           <span>G-CODE</span>
           {/* <span>E-mail: info@g-code.com</span> */}
           <span>Phone: +385993255982</span>
