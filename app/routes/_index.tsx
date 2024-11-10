@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
-import { Form } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import { useRef, useState } from "react";
 import { FaBars, FaFacebook, FaLinkedin } from "react-icons/fa";
 
@@ -292,12 +292,22 @@ export default function Index() {
         </div>
       </main>
       <footer className=" bg-blue-950 text-white w-full">
-        <div className="flex flex-col gap-y-3 md:flex-row max-w-[1440px] justify-between items-center p-3 mx-auto">
+        <div className="flex flex-col gap-y-3 md:flex-row max-w-[1440px] justify-evenly items-center p-3 mx-auto">
           <span>G-CODE</span>
           {/* <span>E-mail: info@g-code.com</span> */}
           <span>Phone: +385993255982</span>
-          <FaFacebook />
-          <FaLinkedin />
+          {/*   <FaFacebook /> */}
+
+          <Link
+            rel="noreferrer"
+            target="_blank"
+            to={
+              "https://www.linkedin.com/company/g-code-info/about/?viewAsMember=true"
+            }
+          >
+            {" "}
+            <FaLinkedin />
+          </Link>
         </div>{" "}
       </footer>
     </div>
