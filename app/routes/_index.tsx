@@ -74,9 +74,9 @@ export default function Index() {
     servicesRef.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className="flex flex-col h-screen ">
+    <div className="flex flex-col h-screen">
       <header className="bg-white fixed top-0 w-full border-b-solid border-b-2 border-b-slate-300">
-        <div className="flex gap-9 w-full max-w-[1440px] p-3 justify-between items-center mx-auto">
+        <div className="flex gap-9 max-w-[1440px] p-3 justify-between items-center mx-auto">
           {" "}
           <h1 className="leading text-2xl font-bold text-gray-800">
             {/*    dark:text-gray-100 */}
@@ -289,8 +289,8 @@ export default function Index() {
           </Form>
         </div>
       </main>
-      <footer className=" bg-blue-950 text-white w-full ">
-        <div className="flex flex-col gap-y-3 md:flex-row w-full max-w-[1440px] justify-between items-center p-3 mx-auto">
+      <footer className=" bg-blue-950 text-white w-full">
+        <div className="flex flex-col gap-y-3 md:flex-row max-w-[1440px] justify-between items-center p-3 mx-auto">
           <span>G-CODE</span>
           {/* <span>E-mail: info@g-code.com</span> */}
           <span>Phone: +385993255982</span>
