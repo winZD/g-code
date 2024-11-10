@@ -1,7 +1,7 @@
 import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 import { useRef, useState } from "react";
-import { FaFacebook, FaHamburger, FaLinkedin } from "react-icons/fa";
+import { FaBars, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 import { getValidatedFormData, useRemixForm } from "remix-hook-form";
 import * as zod from "zod";
@@ -85,7 +85,7 @@ export default function Index() {
           <div className="flex md:hidden">
             {
               <button onClick={() => setOpen(!open)}>
-                {open ? <FaX size={25} /> : <FaHamburger size={25} />}
+                {open ? <FaX size={25} /> : <FaBars size={25} />}
               </button>
             }
             {open && (
