@@ -76,7 +76,7 @@ export default function Index() {
   return (
     <div className="flex flex-col h-screen ">
       <header className="bg-white fixed top-0 w-full border-b-solid border-b-2 border-b-slate-300">
-        <div className="flex gap-9 max-w-[1440px] p-3 justify-between items-center mx-auto">
+        <div className="flex gap-9 w-full max-w-[1440px] p-3 justify-between items-center mx-auto">
           {" "}
           <h1 className="leading text-2xl font-bold text-gray-800">
             {/*    dark:text-gray-100 */}
@@ -125,7 +125,7 @@ export default function Index() {
         </div>
       </header>
 
-      <main className="flex flex-col max-w-[1440px] grow bg-gray-100 mx-auto">
+      <main className="flex flex-col w-full max-w-[1440px] grow bg-gray-100 mx-auto">
         <div className="flex flex-col bg-[url('/tech.jpg')] h-96 w-full bg-cover bg-center items-center justify-center text-center text-white ">
           <h1 className="text-3xl font-bold mb-1">YOUR BEST DIGITAL PARTNER</h1>
           <button
@@ -290,7 +290,7 @@ export default function Index() {
         </div>
       </main>
       <footer className=" bg-blue-950 text-white w-full ">
-        <div className="flex flex-col gap-y-3 md:flex-row max-w-[1440px] justify-between items-center p-3 mx-auto">
+        <div className="flex flex-col gap-y-3 md:flex-row w-full max-w-[1440px] justify-between items-center p-3 mx-auto">
           <span>G-CODE</span>
           {/* <span>E-mail: info@g-code.com</span> */}
           <span>Phone: +385993255982</span>
