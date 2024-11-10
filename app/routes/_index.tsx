@@ -283,7 +283,7 @@ export default function Index() {
               )}
             </label>
             <button
-              className="bg-slate-200 p-1 hover:bg-slate-300 rounded-md"
+              className="bg-slate-200 p-1 hover:bg-slate-300 rounded-md text-slate-600 font-bold"
               type="submit"
             >
               Submit
