@@ -245,7 +245,7 @@ export default function Index() {
             onSubmit={handleSubmit}
             method="POST"
           >
-            <div className="flex flex-col gap-x-2 md:flex-row">
+            <div className="flex flex-col gap-x-2 md:flex-row text-slate-600">
               {" "}
               <label className="flex flex-col w-full">
                 Name
@@ -271,7 +271,7 @@ export default function Index() {
               </label>
             </div>
 
-            <label className="flex flex-col h-full">
+            <label className="flex flex-col h-full text-slate-600">
               Query:
               <textarea
                 className="border-solid border-2 border-slate-300 rounded-md h-full"
