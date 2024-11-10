@@ -140,7 +140,8 @@ export default function Index() {
           className="flex flex-col gap-3 md:flex-row w-full shadow-md bg-blue-950 text-slate-300 p-4"
         >
           <div className="flex flex-1 items-center justify-center font-extrabold text-4xl">
-            {"G-CODE...it's that simple"}
+            {/*   {"G-CODE...it's that simple"} */}
+            <img src="logo_1.png" alt="g-code-logo" />
           </div>
           {/* add span element and make gap y to 4rem*/}
           <div className="flex flex-col flex-1 items-center justify-center gap-y-5 ">
