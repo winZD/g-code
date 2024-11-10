@@ -78,10 +78,11 @@ export default function Index() {
       <header className="bg-white fixed top-0 w-full border-b-solid border-b-2 border-b-slate-300">
         <div className="flex gap-9 max-w-[1440px] p-3 justify-between items-center mx-auto">
           {" "}
-          <h1 className="leading text-2xl font-bold text-gray-800">
-            {/*    dark:text-gray-100 */}
+          <img src="logo_1.png" alt="g-code-logo" height={50} width={50} />
+          {/*    <h1 className="leading text-2xl font-bold text-gray-800">
+               dark:text-gray-100
             G-CODE <span className="sr-only">G-CODE</span>
-          </h1>
+          </h1> */}
           <div className="flex md:hidden">
             {
               <button onClick={() => setOpen(!open)}>
