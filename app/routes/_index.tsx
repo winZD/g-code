@@ -1,7 +1,7 @@
 import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
 import { Form, Link } from "@remix-run/react";
 import { useRef, useState } from "react";
-import { FaBars, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaBars, FaLinkedin } from "react-icons/fa";
 
 import { getValidatedFormData, useRemixForm } from "remix-hook-form";
 import * as zod from "zod";
@@ -90,7 +90,7 @@ export default function Index() {
               </button>
             }
             {open && (
-              <div className="flex flex-col w-full absolute top-10 right-0 bg-white">
+              <div className="flex flex-col w-full absolute top-10 right-0 bg-white text-blue-950">
                 <div className="flex justify-end"></div>
 
                 <div className="flex flex-col gap-2 justify-center items-center font-semibold">
@@ -116,12 +116,10 @@ export default function Index() {
               </div>
             )}
           </div>
-          <div className="md:flex justify-center items-center gap-x-3 hidden font-semibold">
+          <div className="md:flex justify-center items-center gap-x-3 hidden font-semibold text-blue-950">
             <button onClick={scrollToAboutUs}>ABOUT</button>
             <button onClick={scrollToServices}>SERVICES</button>
             <button onClick={scrollToContact}>CONTACT</button>
-            {/*    <img src="cro-flag.svg" alt="" />
-        <img src="us-flag.svg" alt="" /> */}
           </div>
         </div>
       </header>
@@ -174,7 +172,9 @@ export default function Index() {
           className="grid md:grid-cols-3 gap-4 text-slate-600"
         >
           <div className="flex flex-col justify-center gap-5 items-center shadow-2xl p-4">
-            <span className="text-3xl font-bold">DEVELOPMENT</span>
+            <span className="text-3xl font-bold text-blue-950">
+              DEVELOPMENT
+            </span>
             <img
               className="max-h-28"
               src="undraw_progressive_app_m-9-ms.svg"
@@ -188,7 +188,7 @@ export default function Index() {
             </span>
           </div>
           <div className="flex flex-col justify-center gap-5 items-center p-4 shadow-2xl">
-            <span className="text-3xl font-bold">DESIGN</span>
+            <span className="text-3xl font-bold text-blue-950">DESIGN</span>
 
             <img
               className="max-h-28"
@@ -203,7 +203,9 @@ export default function Index() {
             </span>
           </div>
           <div className="flex flex-col justify-center gap-5 items-center rounded-md p-4 shadow-2xl">
-            <span className="text-3xl font-bold">BUSINESS ANALYSIS</span>
+            <span className="text-3xl font-bold text-blue-950">
+              BUSINESS ANALYSIS
+            </span>
             <img
               className="max-h-28"
               src="undraw_business_plan_re_0v81.svg"
@@ -219,7 +221,7 @@ export default function Index() {
         </div>
         <div ref={contactRef} className="flex flex-col md:flex-row p-4 gap-4">
           <div className="flex-1 flex flex-col gap-y-5 text-slate-600 ">
-            <span className="text-3xl font-bold">
+            <span className="text-3xl font-bold text-blue-950">
               {"Get in Touch with G-CODE"}
             </span>
             <span>
