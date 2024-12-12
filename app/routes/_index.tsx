@@ -13,8 +13,26 @@ import { jsonWithSuccess } from "remix-toast";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "G-CODE" },
-    { name: "description", content: "Welcome to G-CODE!" },
+    { title: "G-CODE | Web | Development" },
+    {
+      name: "description",
+      content:
+        "Custom web development, UX/UI design, and business analysis to help businesses grow digitally.",
+    },
+    {
+      name: "keywords",
+      content:
+        "web development, custom software, UX design, business analysis, digital transformation, G-CODE",
+    },
+    { name: "author", content: "G-CODE Team" },
+    { property: "og:title", content: "G-CODE - Your Best Digital Partner" },
+    {
+      property: "og:description",
+      content:
+        "Transform your business with G-CODE's expert web solutions and digital strategies.",
+    },
+    { property: "og:url", content: "https://www.g-code.com.hr/" },
+    { property: "og:type", content: "website" },
   ];
 };
 
