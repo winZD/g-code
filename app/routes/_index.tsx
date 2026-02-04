@@ -54,7 +54,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   }
 
   await sendEmail({
-    to: "puntica007@gmail.com",
+    to: "info@g-code.com.hr",
     name: data.name,
     email: data.email,
     query: data.query,
