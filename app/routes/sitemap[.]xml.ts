@@ -6,6 +6,7 @@ export const loader: LoaderFunction = async () => {
   <url>
     <loc>https://www.g-code.com.hr/</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 </urlset>`;
@@ -14,6 +15,7 @@ export const loader: LoaderFunction = async () => {
     status: 200,
     headers: {
       "Content-Type": "application/xml; charset=UTF-8",
+      "Cache-Control": "public, max-age=3600",
     },
   });
 };

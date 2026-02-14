@@ -11,26 +11,51 @@ import { jsonWithSuccess } from "remix-toast";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "G-CODE | Web | Development" },
+    { title: "G-CODE | Custom Web Development & Digital Solutions in Croatia" },
     {
       name: "description",
       content:
-        "Custom web development, UX/UI design, and business analysis to help businesses grow digitally.",
+        "G-CODE is a Croatian digital agency specializing in custom web development, UX/UI design, and business analysis. We build scalable, high-performance web applications that drive digital transformation.",
     },
     {
       name: "keywords",
       content:
-        "web development, custom software, UX design, business analysis, digital transformation, G-CODE",
+        "web development Croatia, custom software development, UX/UI design, business analysis, digital transformation, G-CODE, web agency Croatia, React development, enterprise web solutions, e-commerce development",
     },
-    { name: "author", content: "G-CODE Team" },
-    { property: "og:title", content: "G-CODE - Your Best Digital Partner" },
+    { name: "author", content: "G-CODE" },
+    { name: "robots", content: "index, follow" },
+    { name: "geo.region", content: "HR" },
+    { name: "geo.placename", content: "Croatia" },
+    { name: "language", content: "en" },
+    {
+      property: "og:title",
+      content: "G-CODE | Custom Web Development & Digital Solutions",
+    },
     {
       property: "og:description",
       content:
-        "Transform your business with G-CODE's expert web solutions and digital strategies.",
+        "Transform your business with G-CODE's expert web development, UX/UI design, and digital strategy services. Based in Croatia, serving clients worldwide.",
     },
     { property: "og:url", content: "https://www.g-code.com.hr/" },
     { property: "og:type", content: "website" },
+    { property: "og:site_name", content: "G-CODE" },
+    { property: "og:locale", content: "en_US" },
+    { property: "og:image", content: "https://www.g-code.com.hr/logo_1.png" },
+    {
+      property: "og:image:alt",
+      content: "G-CODE - Custom Web Development & Digital Solutions",
+    },
+    { name: "twitter:card", content: "summary_large_image" },
+    {
+      name: "twitter:title",
+      content: "G-CODE | Custom Web Development & Digital Solutions",
+    },
+    {
+      name: "twitter:description",
+      content:
+        "Transform your business with G-CODE's expert web development, UX/UI design, and digital strategy services.",
+    },
+    { name: "twitter:image", content: "https://www.g-code.com.hr/logo_1.png" },
   ];
 };
 
@@ -89,250 +114,402 @@ export default function Index() {
   };
 
   return (
-    <div className="flex flex-col h-screen" id="main-content">
-      <header className="bg-white fixed top-0 w-full border-b-2 border-b-slate-300">
-        <div className="flex gap-9 max-w-[1440px] p-3 justify-between items-center mx-auto">
-          <h1 className="text-2xl font-bold text-blue-950">
-            G-CODE <span className="sr-only">G-CODE</span>
-          </h1>
+    <div className="flex flex-col min-h-screen bg-slate-50" id="main-content">
+      {/* Header */}
+      <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div className="flex max-w-7xl px-6 py-4 justify-between items-center mx-auto">
+          <span className="text-2xl font-bold tracking-tight text-blue-950">
+            G-CODE
+          </span>
           <div className="flex md:hidden">
             <button
               onClick={() => setOpen(!open)}
               aria-label={
                 open ? "Close navigation menu" : "Open navigation menu"
               }
+              className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
             >
-              {open ? <FaX size={25} /> : <FaBars size={25} />}
+              {open ? <FaX size={20} /> : <FaBars size={20} />}
             </button>
             {open && (
               <nav
-                className="flex flex-col w-full absolute top-10 right-0 bg-white text-blue-950"
+                className="flex flex-col w-full absolute top-full left-0 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-lg"
                 aria-label="Mobile Navigation"
               >
-                <div className="flex flex-col gap-2 justify-center items-center font-semibold">
+                <div className="flex flex-col">
                   <button
-                    className="hover:bg-slate-100 w-full"
-                    onClick={scrollToAboutUs}
+                    className="px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-950 transition-colors text-left"
+                    onClick={() => {
+                      scrollToAboutUs();
+                      setOpen(false);
+                    }}
                   >
-                    ABOUT
+                    About
                   </button>
                   <button
-                    className="hover:bg-slate-100 w-full"
-                    onClick={scrollToServices}
+                    className="px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-950 transition-colors text-left"
+                    onClick={() => {
+                      scrollToServices();
+                      setOpen(false);
+                    }}
                   >
-                    SERVICES
+                    Services
                   </button>
                   <button
-                    className="hover:bg-slate-100 w-full"
-                    onClick={scrollToContact}
+                    className="px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-950 transition-colors text-left"
+                    onClick={() => {
+                      scrollToContact();
+                      setOpen(false);
+                    }}
                   >
-                    CONTACT
+                    Contact
                   </button>
                 </div>
               </nav>
             )}
           </div>
           <nav
-            className="hidden md:flex justify-center items-center gap-x-3 font-semibold text-blue-950"
+            className="hidden md:flex items-center gap-x-8"
             aria-label="Primary Navigation"
           >
-            <button onClick={scrollToAboutUs}>ABOUT</button>
-            <button onClick={scrollToServices}>SERVICES</button>
-            <button onClick={scrollToContact}>CONTACT</button>
+            <button
+              onClick={scrollToAboutUs}
+              className="text-sm font-medium text-slate-600 hover:text-blue-950 transition-colors"
+            >
+              About
+            </button>
+            <button
+              onClick={scrollToServices}
+              className="text-sm font-medium text-slate-600 hover:text-blue-950 transition-colors"
+            >
+              Services
+            </button>
+            <button
+              onClick={scrollToContact}
+              className="text-sm font-medium bg-blue-950 text-white px-5 py-2 rounded-full hover:bg-blue-900 transition-colors"
+            >
+              Contact
+            </button>
           </nav>
         </div>
       </header>
 
-      <main className="flex flex-col w-full max-w-[1440px] grow bg-gray-100 mx-auto pt-16">
-        <div className="flex flex-col bg-[url('/tech.jpg')] h-96 w-full bg-cover bg-center items-center justify-center text-center text-white">
-          <h1 className="text-3xl font-bold mb-1">YOUR BEST DIGITAL PARTNER</h1>
-          <button
-            className="border-white border-2 font-semibold rounded transition ease-in-out delay-150 bg-blue-950 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-5"
-            onClick={scrollToContact}
-          >
-            Contact
-          </button>
-        </div>
+      <main className="flex flex-col grow">
+        {/* Hero */}
+        <section className="relative flex flex-col bg-[url('/tech.jpg')] min-h-[90vh] w-full bg-cover bg-center items-center justify-center text-center text-white">
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-950/60 to-slate-900/90" />
+          <div className="relative z-10 max-w-4xl mx-auto px-6">
+            <p className="text-sm md:text-base font-medium tracking-widest uppercase text-blue-300 mb-4 animate-fade-in">
+              Web Development &middot; Design &middot; Strategy
+            </p>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6 animate-fade-in-up">
+              Your Best
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                Digital Partner
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 animate-fade-in-delay">
+              We build scalable, high-performance web applications that drive
+              digital transformation for businesses worldwide.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up-delay">
+              <button
+                className="px-8 py-3.5 bg-white text-blue-950 font-semibold rounded-full hover:bg-slate-100 transition-all hover:shadow-lg hover:shadow-white/20"
+                onClick={scrollToContact}
+              >
+                Get in Touch
+              </button>
+              <button
+                className="px-8 py-3.5 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all"
+                onClick={scrollToServices}
+              >
+                Our Services
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* About */}
         <section
           ref={aboutUsRef}
-          className="flex flex-col gap-3 md:flex-row w-full shadow-md bg-blue-950 text-slate-300 p-4"
+          className="py-20 md:py-28 bg-white"
           aria-labelledby="about-heading"
         >
-          <div className="flex flex-1 items-center justify-center font-extrabold text-4xl">
-            <img src="logo_1.png" alt="G-CODE logo" />
-          </div>
-          <div className="flex flex-col flex-1 items-center justify-center gap-y-5">
-            <span id="about-heading" className="sr-only">
-              About G-CODE
-            </span>
-            <span>
-              Our business specializes in developing custom web software
-              solutions tailored to meet the unique needs of our clients. We
-              combine modern technologies with user-friendly design to create
-              scalable, secure, and high-performance web applications.
-            </span>
-            <span>
-              From e-commerce platforms to enterprise management systems, we
-              deliver solutions that streamline operations and drive digital
-              transformation. Our team of expert developers is dedicated to
-              ensuring each project is delivered on time and exceeds
-              expectations.
-            </span>
-            <span>
-              We focus on understanding our clients goals to provide innovative
-              solutions that enhance their online presence. With a commitment to
-              quality and ongoing support, we help businesses grow in the
-              digital space.
-            </span>
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+              <div className="flex-1 flex items-center justify-center">
+                <img
+                  src="logo_1.png"
+                  alt="G-CODE company logo"
+                  className="w-full max-w-sm"
+                  width={384}
+                  height={384}
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1">
+                <h2
+                  id="about-heading"
+                  className="text-3xl md:text-4xl font-bold text-blue-950 mb-8"
+                >
+                  About G-CODE
+                </h2>
+                <div className="space-y-5 text-slate-600 leading-relaxed">
+                  <p>
+                    Our business specializes in developing custom web software
+                    solutions tailored to meet the unique needs of our clients.
+                    We combine modern technologies with user-friendly design to
+                    create scalable, secure, and high-performance web
+                    applications.
+                  </p>
+                  <p>
+                    From e-commerce platforms to enterprise management systems,
+                    we deliver solutions that streamline operations and drive
+                    digital transformation. Our team of expert developers is
+                    dedicated to ensuring each project is delivered on time and
+                    exceeds expectations.
+                  </p>
+                  <p>
+                    We focus on understanding our clients&apos; goals to provide
+                    innovative solutions that enhance their online presence.
+                    With a commitment to quality and ongoing support, we help
+                    businesses grow in the digital space.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
+
+        {/* Services */}
         <section
           ref={servicesRef}
-          className="grid md:grid-cols-3 gap-4 text-slate-600"
-          aria-label="Our Services"
+          className="py-20 md:py-28 bg-slate-50"
+          aria-labelledby="services-heading"
         >
-          <div className="flex flex-col justify-center gap-5 items-center shadow-2xl p-4">
-            <span className="text-3xl font-bold text-blue-950">
-              DEVELOPMENT
-            </span>
-            <img
-              className="max-h-28"
-              src="undraw_progressive_app_m-9-ms.svg"
-              alt="Custom web development illustration"
-            />
-            <span>
-              We create custom, high-performance web applications tailored to
-              meet specific client needs, using modern technologies and ensuring
-              scalability, security, and efficiency.
-            </span>
-          </div>
-          <div className="flex flex-col justify-center gap-5 items-center p-4 shadow-2xl">
-            <span className="text-3xl font-bold text-blue-950">DESIGN</span>
-            <img
-              className="max-h-28"
-              src="undraw_design_process.svg"
-              alt="UX/UI design process illustration"
-            />
-            <span>
-              Our design services focus on user experience, combining aesthetics
-              with functionality to create intuitive, visually appealing digital
-              interfaces that drive engagement.
-            </span>
-          </div>
-          <div className="flex flex-col justify-center gap-5 items-center rounded-md p-4 shadow-2xl">
-            <span className="text-3xl font-bold text-blue-950">
-              BUSINESS ANALYSIS
-            </span>
-            <img
-              className="max-h-28"
-              src="undraw_business_plan_re_0v81.svg"
-              alt="Business analysis illustration"
-            />
-            <span>
-              We help businesses optimize their digital strategies by analyzing
-              data and providing actionable insights to improve operational
-              efficiency and digital transformation.
-            </span>
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2
+                id="services-heading"
+                className="text-3xl md:text-4xl font-bold text-blue-950 mb-4"
+              >
+                What We Do
+              </h2>
+              <p className="text-slate-500 max-w-2xl mx-auto text-lg">
+                We offer end-to-end digital services to bring your vision to
+                life.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              <article className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 hover:-translate-y-1">
+                <div className="mb-6">
+                  <img
+                    className="h-28 mx-auto"
+                    src="undraw_progressive_app_m-9-ms.svg"
+                    alt="Custom web development illustration"
+                    width={160}
+                    height={112}
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-blue-950 mb-3 text-center">
+                  Development
+                </h3>
+                <p className="text-slate-600 text-center leading-relaxed">
+                  We create custom, high-performance web applications tailored
+                  to meet specific client needs, using modern technologies and
+                  ensuring scalability, security, and efficiency.
+                </p>
+              </article>
+              <article className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 hover:-translate-y-1">
+                <div className="mb-6">
+                  <img
+                    className="h-28 mx-auto"
+                    src="undraw_design_process.svg"
+                    alt="UX/UI design process illustration"
+                    width={160}
+                    height={112}
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-blue-950 mb-3 text-center">
+                  Design
+                </h3>
+                <p className="text-slate-600 text-center leading-relaxed">
+                  Our design services focus on user experience, combining
+                  aesthetics with functionality to create intuitive, visually
+                  appealing digital interfaces that drive engagement.
+                </p>
+              </article>
+              <article className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 hover:-translate-y-1">
+                <div className="mb-6">
+                  <img
+                    className="h-28 mx-auto"
+                    src="undraw_business_plan_re_0v81.svg"
+                    alt="Business analysis illustration"
+                    width={160}
+                    height={112}
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-blue-950 mb-3 text-center">
+                  Business Analysis
+                </h3>
+                <p className="text-slate-600 text-center leading-relaxed">
+                  We help businesses optimize their digital strategies by
+                  analyzing data and providing actionable insights to improve
+                  operational efficiency and digital transformation.
+                </p>
+              </article>
+            </div>
           </div>
         </section>
+
+        {/* Contact */}
         <section
           ref={contactRef}
-          className="flex flex-col md:flex-row p-4 gap-4"
+          className="py-20 md:py-28 bg-white"
           aria-labelledby="contact-heading"
         >
-          <div className="flex-1 flex flex-col gap-y-5 text-slate-600">
-            <h2
-              id="contact-heading"
-              className="text-3xl font-bold text-blue-950"
-            >
-              {"Get in Touch with G-CODE"}
-            </h2>
-            <span>
-              {
-                "Whether you're looking to transform your business with innovative tech solutions or have questions about our services, we're here to help."
-              }
-            </span>
-            <span>
-              {
-                "Reach out to our team, and let’s make IT simple together. Fill out the form below with your details, and we’ll get back to you promptly to discuss your needs."
-              }
-            </span>
-            <img
-              className="h-60"
-              src="undraw_business_deal_re_up4u.svg"
-              alt="Business deal illustration"
-            />
-          </div>
-          <Form
-            className="flex flex-1 flex-col gap-3"
-            onSubmit={handleSubmit}
-            method="POST"
-          >
-            <div className="flex flex-col gap-x-2 md:flex-row text-slate-600">
-              <label className="flex flex-col w-full">
-                Name
-                <input
-                  className="border-2 border-slate-300 rounded-md"
-                  type="text"
-                  {...register("name")}
-                  aria-invalid={errors.name ? "true" : "false"}
-                />
-                {errors.name && (
-                  <p className="text-red-700" role="alert">
-                    {errors.name.message}
-                  </p>
-                )}
-              </label>
-              <label className="flex flex-col w-full">
-                Email
-                <input
-                  className="border-2 border-slate-300 rounded-md"
-                  type="email"
-                  {...register("email")}
-                  aria-invalid={errors.email ? "true" : "false"}
-                />
-                {errors.email && (
-                  <p className="text-red-700" role="alert">
-                    {errors.email.message}
-                  </p>
-                )}
-              </label>
-            </div>
-            <label className="flex flex-col text-slate-600">
-              Query:
-              <textarea
-                className="border-2 border-slate-300 rounded-md"
-                cols={50}
-                {...register("query")}
-                aria-invalid={errors.query ? "true" : "false"}
-              />
-              {errors.query && (
-                <p className="text-red-700" role="alert">
-                  {errors.query.message}
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col lg:flex-row gap-16">
+              <div className="flex-1 flex flex-col gap-y-6">
+                <h2
+                  id="contact-heading"
+                  className="text-3xl md:text-4xl font-bold text-blue-950"
+                >
+                  Get in Touch
+                </h2>
+                <p className="text-slate-600 leading-relaxed text-lg">
+                  Whether you&apos;re looking to transform your business with
+                  innovative tech solutions or have questions about our
+                  services, we&apos;re here to help.
                 </p>
-              )}
-            </label>
-            <button
-              className="bg-slate-200 p-1 hover:bg-slate-300 rounded-md text-slate-600 font-bold"
-              type="submit"
-            >
-              Submit
-            </button>
-          </Form>
+                <p className="text-slate-600 leading-relaxed text-lg">
+                  Reach out to our team, and let&apos;s make IT simple together.
+                  Fill out the form with your details, and we&apos;ll get back
+                  to you promptly to discuss your needs.
+                </p>
+                <img
+                  className="h-60 mt-4 self-center lg:self-start"
+                  src="undraw_business_deal_re_up4u.svg"
+                  alt="Business partnership illustration"
+                  width={320}
+                  height={240}
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1">
+                <Form
+                  className="flex flex-col gap-5 bg-slate-50 rounded-2xl p-8 border border-slate-200"
+                  onSubmit={handleSubmit}
+                  method="POST"
+                >
+                  <div className="flex flex-col gap-5 md:flex-row">
+                    <label className="flex flex-col gap-1.5 w-full">
+                      <span className="text-sm font-medium text-slate-700">
+                        Name
+                      </span>
+                      <input
+                        className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                        type="text"
+                        placeholder="Your name"
+                        {...register("name")}
+                        aria-invalid={errors.name ? "true" : "false"}
+                      />
+                      {errors.name && (
+                        <p className="text-sm text-red-600" role="alert">
+                          {errors.name.message}
+                        </p>
+                      )}
+                    </label>
+                    <label className="flex flex-col gap-1.5 w-full">
+                      <span className="text-sm font-medium text-slate-700">
+                        Email
+                      </span>
+                      <input
+                        className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                        type="email"
+                        placeholder="your@email.com"
+                        {...register("email")}
+                        aria-invalid={errors.email ? "true" : "false"}
+                      />
+                      {errors.email && (
+                        <p className="text-sm text-red-600" role="alert">
+                          {errors.email.message}
+                        </p>
+                      )}
+                    </label>
+                  </div>
+                  <label className="flex flex-col gap-1.5">
+                    <span className="text-sm font-medium text-slate-700">
+                      Message
+                    </span>
+                    <textarea
+                      className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow min-h-[140px] resize-y"
+                      placeholder="Tell us about your project..."
+                      {...register("query")}
+                      aria-invalid={errors.query ? "true" : "false"}
+                    />
+                    {errors.query && (
+                      <p className="text-sm text-red-600" role="alert">
+                        {errors.query.message}
+                      </p>
+                    )}
+                  </label>
+                  <button
+                    className="w-full py-3 bg-blue-950 text-white font-semibold rounded-lg hover:bg-blue-900 transition-colors mt-2"
+                    type="submit"
+                  >
+                    Send Message
+                  </button>
+                </Form>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
-      <footer className="bg-blue-950 text-white w-full">
-        <div className="flex flex-col gap-y-3 md:flex-row max-w-[1440px] justify-evenly items-center p-3 mx-auto">
-          <span>G-CODE</span>
-          <a href="tel:+385993255982">Phone: +385993255982</a>
-          <Link
-            rel="noreferrer"
-            target="_blank"
-            to="https://www.linkedin.com/company/g-code-info/about/?viewAsMember=true"
-            aria-label="G-CODE on LinkedIn"
-          >
-            <FaLinkedin />
-          </Link>
+
+      {/* Footer */}
+      <footer className="bg-blue-950 text-white">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex flex-col items-center md:items-start gap-2">
+              <span className="text-xl font-bold tracking-tight">G-CODE</span>
+              <p className="text-sm text-slate-400">
+                Your partner in digital transformation.
+              </p>
+            </div>
+            <div className="flex flex-col items-center md:items-end gap-3">
+              <a
+                href="tel:+385993255982"
+                className="text-sm text-slate-300 hover:text-white transition-colors"
+              >
+                Phone: +385 99 325 5982
+              </a>
+              <a
+                href="mailto:info@g-code.com.hr"
+                className="text-sm text-slate-300 hover:text-white transition-colors"
+              >
+                Email: info@g-code.com.hr
+              </a>
+              <Link
+                rel="noreferrer"
+                target="_blank"
+                to="https://www.linkedin.com/company/g-code-info/about/?viewAsMember=true"
+                aria-label="G-CODE on LinkedIn"
+                className="text-slate-300 hover:text-white transition-colors"
+              >
+                <FaLinkedin size={20} />
+              </Link>
+            </div>
+          </div>
+          <div className="border-t border-white/10 mt-8 pt-8 text-center">
+            <p className="text-sm text-slate-400">
+              &copy; {new Date().getFullYear()} G-CODE. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>

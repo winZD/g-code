@@ -79,21 +79,88 @@ export function Layout({ children }: { children: React.ReactNode }) {
               name: "G-CODE",
               url: "https://www.g-code.com.hr/",
               logo: "https://www.g-code.com.hr/logo_1.png",
+              email: "info@g-code.com.hr",
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+385993255982",
                 contactType: "customer service",
+                availableLanguage: ["English", "Croatian"],
               },
+              sameAs: [
+                "https://www.linkedin.com/company/g-code-info/",
+              ],
             }),
           }}
         />
 
-        {/* Twitter Card Meta */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="G-CODE | Web | Development" />
-        <meta
-          name="twitter:description"
-          content="Custom web development, UX/UI design, and business analysis to help businesses grow digitally."
+        {/* WebSite Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "G-CODE",
+              url: "https://www.g-code.com.hr/",
+            }),
+          }}
+        />
+
+        {/* LocalBusiness Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "G-CODE",
+              url: "https://www.g-code.com.hr/",
+              logo: "https://www.g-code.com.hr/logo_1.png",
+              image: "https://www.g-code.com.hr/logo_1.png",
+              telephone: "+385993255982",
+              email: "info@g-code.com.hr",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "HR",
+              },
+              priceRange: "$$",
+              description:
+                "Croatian digital agency specializing in custom web development, UX/UI design, and business analysis.",
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Digital Services",
+                itemListElement: [
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Custom Web Development",
+                      description:
+                        "High-performance web applications built with modern technologies.",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "UX/UI Design",
+                      description:
+                        "User-centered design combining aesthetics with functionality.",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Business Analysis",
+                      description:
+                        "Digital strategy optimization and operational efficiency consulting.",
+                    },
+                  },
+                ],
+              },
+            }),
+          }}
         />
         <Links />
       </head>
