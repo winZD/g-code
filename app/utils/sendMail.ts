@@ -26,13 +26,17 @@ export async function sendEmail(data: EmailData): Promise<void> {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: data.to,
-    subject: "👋 Hello from Node.js 🚀",
-    text: `
-      You have a new contact form submission!
-
-      Name: ${data.name}
-      Email: ${data.email}
-      Query: ${data.query}
+    subject: "New Contact Form Submission",
+    html: `
+      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; padding: 24px; background-color: #0f172a; border-radius: 8px;">
+        <p style="margin: 0 0 20px; font-size: 16px; color: #ffffff; font-weight: 600;">New message from your website</p>
+        <div style="background-color: #1e293b; border-radius: 8px; padding: 20px; margin-bottom: 16px;">
+          <p style="margin: 0 0 12px; font-size: 14px; color: #94a3b8;"><strong style="color: #ffffff;">Name:</strong> <span style="color: #e2e8f0;">${data.name}</span></p>
+          <p style="margin: 0 0 12px; font-size: 14px; color: #94a3b8;"><strong style="color: #ffffff;">Email:</strong> <a href="mailto:${data.email}" style="color: #60a5fa; text-decoration: none;">${data.email}</a></p>
+          <p style="margin: 0; font-size: 14px; color: #94a3b8;"><strong style="color: #ffffff;">Message:</strong> <span style="color: #e2e8f0;">${data.query}</span></p>
+        </div>
+        <p style="margin: 0; font-size: 11px; color: #64748b;">Sent from your contact form</p>
+      </div>
     `,
   };
 

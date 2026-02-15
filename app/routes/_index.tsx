@@ -412,7 +412,7 @@ export default function Index() {
                         Name
                       </span>
                       <input
-                        className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                        className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow cursor-text"
                         type="text"
                         placeholder="Your name"
                         {...register("name")}
@@ -429,7 +429,7 @@ export default function Index() {
                         Email
                       </span>
                       <input
-                        className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                        className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow cursor-text"
                         type="email"
                         placeholder="your@email.com"
                         {...register("email")}
@@ -447,7 +447,7 @@ export default function Index() {
                       Message
                     </span>
                     <textarea
-                      className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow min-h-[140px] resize-y"
+                      className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow min-h-[140px] resize-y cursor-text"
                       placeholder="Tell us about your project..."
                       {...register("query")}
                       aria-invalid={errors.query ? "true" : "false"}
