@@ -1,6 +1,6 @@
 import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
 import { Form, Link } from "@remix-run/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { FaBars, FaLinkedin } from "react-icons/fa";
 import { getValidatedFormData, useRemixForm } from "remix-hook-form";
 import * as zod from "zod";
@@ -90,6 +90,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
 export default function Index() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   const contactRef = useRef<HTMLDivElement | null>(null);
   const aboutUsRef = useRef<HTMLDivElement | null>(null);
   const servicesRef = useRef<HTMLDivElement | null>(null);
@@ -113,6 +115,9 @@ export default function Index() {
     servicesRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <div className="flex flex-col min-h-screen bg-slate-50" id="main-content">
       {/* Header */}
@@ -199,21 +204,37 @@ export default function Index() {
         <section className="relative flex flex-col bg-[url('/tech.jpg')] min-h-[90vh] w-full bg-cover bg-center items-center justify-center text-center text-white">
           <div className="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-950/60 to-slate-900/90" />
           <div className="relative z-10 max-w-4xl mx-auto px-6">
-            <p className="text-sm md:text-base font-medium tracking-widest uppercase text-blue-300 mb-4 animate-fade-in">
-              Web Development &middot; Design &middot; Strategy
+            <p
+              className={`text-sm md:text-base font-medium tracking-widest uppercase text-blue-300 mb-4 ${
+                mounted ? "animate-fade-in" : "opacity-0"
+              }`}
+            >
+              Development &middot; Design &middot; Strategy
             </p>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6 animate-fade-in-up">
+            <h1
+              className={`text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6 ${
+                mounted ? "animate-fade-in-up" : "opacity-0"
+              }`}
+            >
               Your Best
               <br />
               <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                 Digital Partner
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 animate-fade-in-delay">
+            <p
+              className={`text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 ${
+                mounted ? "animate-fade-in-delay" : "opacity-0"
+              }`}
+            >
               We build scalable, high-performance web applications that drive
               digital transformation for businesses worldwide.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up-delay">
+            <div
+              className={`flex flex-col sm:flex-row gap-4 justify-center ${
+                mounted ? "animate-fade-in-up-delay" : "opacity-0"
+              }`}
+            >
               <button
                 className="px-8 py-3.5 bg-white text-blue-950 font-semibold rounded-full hover:bg-slate-100 transition-all hover:shadow-lg hover:shadow-white/20"
                 onClick={scrollToContact}
