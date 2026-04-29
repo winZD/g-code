@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
-import { Form, Link } from "@remix-run/react";
+import { Form, Link, useNavigation } from "@remix-run/react";
 import { useRef, useState, useEffect } from "react";
 import { FaBars, FaLinkedin } from "react-icons/fa";
 import { getValidatedFormData, useRemixForm } from "remix-hook-form";
@@ -94,6 +94,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 export default function Index() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
 
   const contactRef = useRef<HTMLDivElement | null>(null);
   const aboutUsRef = useRef<HTMLDivElement | null>(null);
@@ -471,10 +473,11 @@ export default function Index() {
                     )}
                   </label>
                   <button
-                    className="w-full py-3 bg-blue-950 text-white font-semibold rounded-lg hover:bg-blue-900 transition-colors mt-2"
+                    className="w-full py-3 bg-blue-950 text-white font-semibold rounded-lg hover:bg-blue-900 transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     type="submit"
+                    disabled={isSubmitting}
                   >
-                    Pošalji Poruku
+                    {isSubmitting ? "Slanje..." : "Pošalji Poruku"}
                   </button>
                 </Form>
               </div>
