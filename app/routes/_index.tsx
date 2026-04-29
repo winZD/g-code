@@ -230,8 +230,8 @@ export default function Index() {
                 mounted ? "animate-fade-in-delay" : "opacity-0"
               }`}
             >
-              Gradimo pametne, skalabilne web i AI-native aplikacije — brže,
-              učinkovitije, za vaš uspjeh.
+              Gradimo pametne, skalabilne web, mobilne i AI-native aplikacije —
+              brže, učinkovitije, za vaš uspjeh.
             </p>
             <div
               className={`flex flex-col sm:flex-row gap-4 justify-center ${
