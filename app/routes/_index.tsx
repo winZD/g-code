@@ -60,9 +60,12 @@ export const meta: MetaFunction = () => {
 };
 
 const schema = zod.object({
-  name: zod.string().min(1),
-  email: zod.string().email().min(1),
-  query: zod.string().min(1),
+  name: zod.string().min(1, { message: "Ime je obavezno." }),
+  email: zod
+    .string()
+    .min(1, { message: "Email je obavezan." })
+    .email({ message: "Unesite ispravnu email adresu." }),
+  query: zod.string().min(1, { message: "Poruka je obavezna." }),
 });
 type FormData = zod.infer<typeof schema>;
 const resolver = zodResolver(schema);
@@ -85,7 +88,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     query: data.query,
   });
 
-  return jsonWithSuccess(data, "You successfully submitted your e-mail!");
+  return jsonWithSuccess(data, "Vaša poruka je uspješno poslana!");
 };
 
 export default function Index() {
@@ -149,7 +152,7 @@ export default function Index() {
                       setOpen(false);
                     }}
                   >
-                    About
+                    O nama
                   </button>
                   <button
                     className="px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-950 transition-colors text-left"
@@ -158,7 +161,7 @@ export default function Index() {
                       setOpen(false);
                     }}
                   >
-                    Services
+                    Usluge
                   </button>
                   <button
                     className="px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-950 transition-colors text-left"
@@ -167,7 +170,7 @@ export default function Index() {
                       setOpen(false);
                     }}
                   >
-                    Contact
+                    Kontakt
                   </button>
                 </div>
               </nav>
@@ -181,19 +184,19 @@ export default function Index() {
               onClick={scrollToAboutUs}
               className="text-sm font-medium text-slate-600 hover:text-blue-950 transition-colors"
             >
-              About
+              O nama
             </button>
             <button
               onClick={scrollToServices}
               className="text-sm font-medium text-slate-600 hover:text-blue-950 transition-colors"
             >
-              Services
+              Usluge
             </button>
             <button
               onClick={scrollToContact}
               className="text-sm font-medium bg-blue-950 text-white px-5 py-2 rounded-full hover:bg-blue-900 transition-colors"
             >
-              Contact
+              Kontakt
             </button>
           </nav>
         </div>
@@ -209,17 +212,17 @@ export default function Index() {
                 mounted ? "animate-fade-in" : "opacity-0"
               }`}
             >
-              Development &middot; Design &middot; Strategy
+              Razvoj &middot; Dizajn &middot; Strategija
             </p>
             <h1
               className={`text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6 ${
                 mounted ? "animate-fade-in-up" : "opacity-0"
               }`}
             >
-              Your Best
+              G-CODE
               <br />
               <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                Digital Partner
+                Digitalni Partner
               </span>
             </h1>
             <p
@@ -227,8 +230,8 @@ export default function Index() {
                 mounted ? "animate-fade-in-delay" : "opacity-0"
               }`}
             >
-              We build scalable, high-performance web applications that drive
-              digital transformation for businesses worldwide.
+              Gradimo pametne, skalabilne web i AI-native aplikacije — brže,
+              učinkovitije, za vaš uspjeh.
             </p>
             <div
               className={`flex flex-col sm:flex-row gap-4 justify-center ${
@@ -239,13 +242,13 @@ export default function Index() {
                 className="px-8 py-3.5 bg-white text-blue-950 font-semibold rounded-full hover:bg-slate-100 transition-all hover:shadow-lg hover:shadow-white/20"
                 onClick={scrollToContact}
               >
-                Get in Touch
+                Kontaktirajte Nas
               </button>
               <button
                 className="px-8 py-3.5 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all"
                 onClick={scrollToServices}
               >
-                Our Services
+                Naše Usluge
               </button>
             </div>
           </div>
@@ -274,28 +277,20 @@ export default function Index() {
                   id="about-heading"
                   className="text-3xl md:text-4xl font-bold text-blue-950 mb-8"
                 >
-                  About G-CODE
+                  O G-CODE
                 </h2>
                 <div className="space-y-5 text-slate-600 leading-relaxed">
                   <p>
-                    Our business specializes in developing custom web software
-                    solutions tailored to meet the unique needs of our clients.
-                    We combine modern technologies with user-friendly design to
-                    create scalable, secure, and high-performance web
-                    applications.
+                    Specijaliziramo se za razvoj web i mobilnih aplikacija te AI
+                    native rješenja prilagođenih vašem poslovanju. Spajamo
+                    moderan razvoj, intuitivni dizajn i pametnu automatizaciju
+                    kako bismo isporučili skalabilne i sigurne aplikacije.
                   </p>
                   <p>
-                    From e-commerce platforms to enterprise management systems,
-                    we deliver solutions that streamline operations and drive
-                    digital transformation. Our team of expert developers is
-                    dedicated to ensuring each project is delivered on time and
-                    exceeds expectations.
-                  </p>
-                  <p>
-                    We focus on understanding our clients&apos; goals to provide
-                    innovative solutions that enhance their online presence.
-                    With a commitment to quality and ongoing support, we help
-                    businesses grow in the digital space.
+                    Od e-commerce platformi do AI native poslovnih sustava —
+                    razvijamo rješenja koja optimiziraju procese i ubrzavaju
+                    digitalnu transformaciju. Svaki projekt isporučujemo na
+                    vrijeme, uz visoke standarde kvalitete i dugoročnu podršku.
                   </p>
                 </div>
               </div>
@@ -315,11 +310,10 @@ export default function Index() {
                 id="services-heading"
                 className="text-3xl md:text-4xl font-bold text-blue-950 mb-4"
               >
-                What We Do
+                Što Radimo
               </h2>
               <p className="text-slate-500 max-w-2xl mx-auto text-lg">
-                We offer end-to-end digital services to bring your vision to
-                life.
+                Pružamo sveobuhvatne digitalne usluge — od ideje do produkcije.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
@@ -335,12 +329,12 @@ export default function Index() {
                   />
                 </div>
                 <h3 className="text-xl font-bold text-blue-950 mb-3 text-center">
-                  Development
+                  Razvoj
                 </h3>
                 <p className="text-slate-600 text-center leading-relaxed">
-                  We create custom, high-performance web applications tailored
-                  to meet specific client needs, using modern technologies and
-                  ensuring scalability, security, and efficiency.
+                  Razvijamo web, mobilne i AI-native aplikacije — od
+                  automatizacije poslovnih procesa do inteligentnih sučelja koja
+                  uče i prilagođavaju se korisnicima.
                 </p>
               </article>
               <article className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 hover:-translate-y-1">
@@ -355,12 +349,12 @@ export default function Index() {
                   />
                 </div>
                 <h3 className="text-xl font-bold text-blue-950 mb-3 text-center">
-                  Design
+                  Dizajn
                 </h3>
                 <p className="text-slate-600 text-center leading-relaxed">
-                  Our design services focus on user experience, combining
-                  aesthetics with functionality to create intuitive, visually
-                  appealing digital interfaces that drive engagement.
+                  Kreiramo digitalna iskustva vođena podacima i analizom
+                  ponašanja korisnika — dizajn koji je intuitivan, moderan i
+                  usmjeren na konverziju.
                 </p>
               </article>
               <article className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 hover:-translate-y-1">
@@ -375,12 +369,12 @@ export default function Index() {
                   />
                 </div>
                 <h3 className="text-xl font-bold text-blue-950 mb-3 text-center">
-                  Business Analysis
+                  Poslovna Analiza
                 </h3>
                 <p className="text-slate-600 text-center leading-relaxed">
-                  We help businesses optimize their digital strategies by
-                  analyzing data and providing actionable insights to improve
-                  operational efficiency and digital transformation.
+                  Koristimo analitiku za otkrivanje poslovnih uvida, predviđanje
+                  trendova i optimizaciju procesa — odluke temeljene na
+                  podacima, ne pretpostavkama.
                 </p>
               </article>
             </div>
@@ -400,17 +394,14 @@ export default function Index() {
                   id="contact-heading"
                   className="text-3xl md:text-4xl font-bold text-blue-950"
                 >
-                  Get in Touch
+                  Kontaktirajte Nas
                 </h2>
                 <p className="text-slate-600 leading-relaxed text-lg">
-                  Whether you&apos;re looking to transform your business with
-                  innovative tech solutions or have questions about our
-                  services, we&apos;re here to help.
+                  Imate ideju ili projekt? Javite nam se — zajedno ćemo pronaći
+                  najbrže i najpametnije rješenje za vaš biznis.
                 </p>
                 <p className="text-slate-600 leading-relaxed text-lg">
-                  Reach out to our team, and let&apos;s make IT simple together.
-                  Fill out the form with your details, and we&apos;ll get back
-                  to you promptly to discuss your needs.
+                  Ispunite obrazac i javit ćemo vam se u najkraćem mogućem roku.
                 </p>
                 <img
                   className="h-60 mt-4 self-center lg:self-start"
@@ -430,12 +421,12 @@ export default function Index() {
                   <div className="flex flex-col gap-5 md:flex-row">
                     <label className="flex flex-col gap-1.5 w-full">
                       <span className="text-sm font-medium text-slate-700">
-                        Name
+                        Ime
                       </span>
                       <input
                         className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow cursor-text"
                         type="text"
-                        placeholder="Your name"
+                        placeholder="Vaše ime"
                         {...register("name")}
                         aria-invalid={errors.name ? "true" : "false"}
                       />
@@ -465,11 +456,11 @@ export default function Index() {
                   </div>
                   <label className="flex flex-col gap-1.5">
                     <span className="text-sm font-medium text-slate-700">
-                      Message
+                      Poruka
                     </span>
                     <textarea
                       className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow min-h-[140px] resize-y cursor-text"
-                      placeholder="Tell us about your project..."
+                      placeholder="Opišite vaš projekt..."
                       {...register("query")}
                       aria-invalid={errors.query ? "true" : "false"}
                     />
@@ -483,7 +474,7 @@ export default function Index() {
                     className="w-full py-3 bg-blue-950 text-white font-semibold rounded-lg hover:bg-blue-900 transition-colors mt-2"
                     type="submit"
                   >
-                    Send Message
+                    Pošalji Poruku
                   </button>
                 </Form>
               </div>
@@ -499,7 +490,7 @@ export default function Index() {
             <div className="flex flex-col items-center md:items-start gap-2">
               <span className="text-xl font-bold tracking-tight">G-CODE</span>
               <p className="text-sm text-slate-400">
-                Your partner in digital transformation.
+                Vaš partner u digitalnoj transformaciji.
               </p>
             </div>
             <div className="flex flex-col items-center md:items-end gap-3">
@@ -507,7 +498,7 @@ export default function Index() {
                 href="tel:+385993255982"
                 className="text-sm text-slate-300 hover:text-white transition-colors"
               >
-                Phone: +385 99 325 5982
+                Telefon: +385 99 325 5982
               </a>
               <a
                 href="mailto:info@g-code.com.hr"
@@ -528,7 +519,7 @@ export default function Index() {
           </div>
           <div className="border-t border-white/10 mt-8 pt-8 text-center">
             <p className="text-sm text-slate-400">
-              &copy; {new Date().getFullYear()} G-CODE. All rights reserved.
+              &copy; {new Date().getFullYear()} G-CODE. Sva prava pridržana.
             </p>
           </div>
         </div>
