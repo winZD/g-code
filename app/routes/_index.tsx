@@ -279,7 +279,7 @@ export default function Index() {
                   id="about-heading"
                   className="text-3xl md:text-4xl font-bold text-blue-950 mb-8"
                 >
-                  O G-CODE
+                  O G-CODE-u
                 </h2>
                 <div className="space-y-5 text-slate-600 leading-relaxed">
                   <p>
