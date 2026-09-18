@@ -1,16 +1,16 @@
 import {
-  json,
+  data,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useLoaderData,
-} from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+  useLocation,
+} from "react-router";
+import type { LinksFunction, LoaderFunctionArgs } from "react-router";
 import { ToastContainer, toast as notify } from "react-toastify";
 
-import { LoaderFunctionArgs } from "@remix-run/node";
 import { getToast } from "remix-toast";
 import { useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,7 +18,7 @@ import "./tailwind.css";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { toast, headers } = await getToast(request);
-  return json({ toast }, { headers });
+  return data({ toast }, { headers });
 };
 
 export const links: LinksFunction = () => [
@@ -42,6 +42,8 @@ export const links: LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { toast } = useLoaderData<typeof loader>();
+  const location = useLocation();
+  const canonicalUrl = `https://www.g-code.com.hr${location.pathname}`;
 
   useEffect(() => {
     if (toast) {
@@ -65,7 +67,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
 
         {/* Canonical URL for SEO */}
-        <link rel="canonical" href="https://www.g-code.com.hr/" />
+        <link rel="canonical" href={canonicalUrl} />
 
         {/* Preload important assets if needed */}
 

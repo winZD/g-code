@@ -1,13 +1,13 @@
-import { ActionFunctionArgs, MetaFunction, json } from "@remix-run/node";
-import { Form, Link, useNavigation } from "@remix-run/react";
-import { useRef, useState, useEffect } from "react";
-import { FaBars, FaLinkedin } from "react-icons/fa";
+import { ActionFunctionArgs, MetaFunction, Form, useNavigation } from "react-router";
+import { useState, useEffect } from "react";
 import { getValidatedFormData, useRemixForm } from "remix-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FaX } from "react-icons/fa6";
 import { sendEmail } from "~/utils/sendMail";
-import { jsonWithSuccess } from "remix-toast";
+import { dataWithSuccess } from "remix-toast";
+import { Header } from "~/components/Header";
+import { Footer } from "~/components/Footer";
+import { Reveal } from "~/components/Reveal";
 
 export const meta: MetaFunction = () => {
   return [
@@ -78,7 +78,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   } = await getValidatedFormData<FormData>(request, resolver);
 
   if (errors) {
-    return json({ errors, defaultValues });
+    return { errors, defaultValues };
   }
 
   await sendEmail({
@@ -88,18 +88,60 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     query: data.query,
   });
 
-  return jsonWithSuccess(data, "Vaša poruka je uspješno poslana!");
+  return dataWithSuccess(data, "Vaša poruka je uspješno poslana!");
 };
 
+const serviceCards = [
+  {
+    src: "undraw_progressive_app_m-9-ms.svg",
+    alt: "Custom web development illustration",
+    title: "Razvoj",
+    description:
+      "Razvijamo web, mobilne i AI-native aplikacije — od automatizacije poslovnih procesa do inteligentnih sučelja koja uče i prilagođavaju se korisnicima.",
+  },
+  {
+    src: "undraw_design_process.svg",
+    alt: "UX/UI design process illustration",
+    title: "Dizajn",
+    description:
+      "Kreiramo digitalna iskustva vođena podacima i analizom ponašanja korisnika — dizajn koji je intuitivan, moderan i usmjeren na konverziju.",
+  },
+  {
+    src: "undraw_business_plan_re_0v81.svg",
+    alt: "Business analysis illustration",
+    title: "Poslovna Analiza",
+    description:
+      "Koristimo analitiku za otkrivanje poslovnih uvida, predviđanje trendova i optimizaciju procesa — odluke temeljene na podacima, ne pretpostavkama.",
+  },
+];
+
+function ServiceCard({ card }: { card: (typeof serviceCards)[number] }) {
+  return (
+    <article className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-2xl hover:shadow-blue-950/5 transition-all duration-300 ease-out border border-slate-100 hover:border-accent-300">
+      <div className="bg-accent-50 group-hover:bg-accent-100 transition-colors duration-300 rounded-2xl p-5 w-fit mx-auto mb-6">
+        <img
+          className="w-16 h-16 object-contain"
+          src={card.src}
+          alt={card.alt}
+          width={64}
+          height={64}
+          loading="lazy"
+        />
+      </div>
+      <h3 className="text-xl font-bold text-blue-950 mb-3 text-center">
+        {card.title}
+      </h3>
+      <p className="text-slate-600 text-center leading-relaxed">
+        {card.description}
+      </p>
+    </article>
+  );
+}
+
 export default function Index() {
-  const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
-
-  const contactRef = useRef<HTMLDivElement | null>(null);
-  const aboutUsRef = useRef<HTMLDivElement | null>(null);
-  const servicesRef = useRef<HTMLDivElement | null>(null);
 
   const {
     handleSubmit,
@@ -110,99 +152,13 @@ export default function Index() {
     resolver,
   });
 
-  const scrollToContact = () => {
-    contactRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-  const scrollToAboutUs = () => {
-    aboutUsRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-  const scrollToServices = () => {
-    servicesRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   useEffect(() => {
     setMounted(true);
   }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-50" id="main-content">
-      {/* Header */}
-      <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div className="flex max-w-7xl px-6 py-4 justify-between items-center mx-auto">
-          <span className="text-2xl font-bold tracking-tight text-blue-950">
-            G-CODE
-          </span>
-          <div className="flex md:hidden">
-            <button
-              onClick={() => setOpen(!open)}
-              aria-label={
-                open ? "Close navigation menu" : "Open navigation menu"
-              }
-              className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-            >
-              {open ? <FaX size={20} /> : <FaBars size={20} />}
-            </button>
-            {open && (
-              <nav
-                className="flex flex-col w-full absolute top-full left-0 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-lg"
-                aria-label="Mobile Navigation"
-              >
-                <div className="flex flex-col">
-                  <button
-                    className="px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-950 transition-colors text-left"
-                    onClick={() => {
-                      scrollToAboutUs();
-                      setOpen(false);
-                    }}
-                  >
-                    O nama
-                  </button>
-                  <button
-                    className="px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-950 transition-colors text-left"
-                    onClick={() => {
-                      scrollToServices();
-                      setOpen(false);
-                    }}
-                  >
-                    Usluge
-                  </button>
-                  <button
-                    className="px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-950 transition-colors text-left"
-                    onClick={() => {
-                      scrollToContact();
-                      setOpen(false);
-                    }}
-                  >
-                    Kontakt
-                  </button>
-                </div>
-              </nav>
-            )}
-          </div>
-          <nav
-            className="hidden md:flex items-center gap-x-8"
-            aria-label="Primary Navigation"
-          >
-            <button
-              onClick={scrollToAboutUs}
-              className="text-sm font-medium text-slate-600 hover:text-blue-950 transition-colors"
-            >
-              O nama
-            </button>
-            <button
-              onClick={scrollToServices}
-              className="text-sm font-medium text-slate-600 hover:text-blue-950 transition-colors"
-            >
-              Usluge
-            </button>
-            <button
-              onClick={scrollToContact}
-              className="text-sm font-medium bg-blue-950 text-white px-5 py-2 rounded-full hover:bg-blue-900 transition-colors"
-            >
-              Kontakt
-            </button>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <main className="flex flex-col grow">
         {/* Hero */}
@@ -210,7 +166,7 @@ export default function Index() {
           <div className="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-950/60 to-slate-900/90" />
           <div className="relative z-10 max-w-4xl mx-auto px-6">
             <p
-              className={`text-sm md:text-base font-medium tracking-widest uppercase text-blue-300 mb-4 ${
+              className={`text-sm md:text-base font-medium tracking-widest uppercase text-accent-300 mb-4 ${
                 mounted ? "animate-fade-in" : "opacity-0"
               }`}
             >
@@ -223,7 +179,7 @@ export default function Index() {
             >
               G-CODE
               <br />
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-300 to-accent-400 bg-clip-text text-transparent">
                 Digitalni Partner
               </span>
             </h1>
@@ -240,31 +196,25 @@ export default function Index() {
                 mounted ? "animate-fade-in-up-delay" : "opacity-0"
               }`}
             >
-              <button
-                className="px-8 py-3.5 bg-white text-blue-950 font-semibold rounded-full hover:bg-slate-100 transition-all hover:shadow-lg hover:shadow-white/20"
-                onClick={scrollToContact}
-              >
+              <a href="#contact" className="btn-primary bg-white text-blue-950 hover:bg-slate-100 shadow-lg shadow-black/10">
                 Kontaktirajte Nas
-              </button>
-              <button
-                className="px-8 py-3.5 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all"
-                onClick={scrollToServices}
-              >
+              </a>
+              <a href="#services" className="btn-secondary">
                 Naše Usluge
-              </button>
+              </a>
             </div>
           </div>
         </section>
 
         {/* About */}
         <section
-          ref={aboutUsRef}
-          className="py-20 md:py-28 bg-white"
+          id="about"
+          className="py-24 md:py-32 bg-white"
           aria-labelledby="about-heading"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-              <div className="flex-1 flex items-center justify-center">
+              <Reveal className="flex-1 flex items-center justify-center" animation="fade-in">
                 <img
                   src="logo_1.png"
                   alt="G-CODE company logo"
@@ -273,11 +223,14 @@ export default function Index() {
                   height={384}
                   loading="lazy"
                 />
-              </div>
-              <div className="flex-1">
+              </Reveal>
+              <Reveal className="flex-1" animation="fade-in-up-delay-150">
+                <p className="text-accent-600 text-sm font-semibold tracking-widest uppercase mb-3">
+                  O nama
+                </p>
                 <h2
                   id="about-heading"
-                  className="text-3xl md:text-4xl font-bold text-blue-950 mb-8"
+                  className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-blue-950 mb-8"
                 >
                   O G-CODE-u
                 </h2>
@@ -295,22 +248,25 @@ export default function Index() {
                     vrijeme, uz visoke standarde kvalitete i dugoročnu podršku.
                   </p>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
 
         {/* Services */}
         <section
-          ref={servicesRef}
-          className="py-20 md:py-28 bg-slate-50"
+          id="services"
+          className="py-24 md:py-32 bg-slate-50"
           aria-labelledby="services-heading"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
+              <p className="text-accent-600 text-sm font-semibold tracking-widest uppercase mb-3">
+                Usluge
+              </p>
               <h2
                 id="services-heading"
-                className="text-3xl md:text-4xl font-bold text-blue-950 mb-4"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-blue-950 mb-4"
               >
                 Što Radimo
               </h2>
@@ -319,82 +275,28 @@ export default function Index() {
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-              <article className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 hover:-translate-y-1">
-                <div className="mb-6">
-                  <img
-                    className="h-28 mx-auto"
-                    src="undraw_progressive_app_m-9-ms.svg"
-                    alt="Custom web development illustration"
-                    width={160}
-                    height={112}
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-blue-950 mb-3 text-center">
-                  Razvoj
-                </h3>
-                <p className="text-slate-600 text-center leading-relaxed">
-                  Razvijamo web, mobilne i AI-native aplikacije — od
-                  automatizacije poslovnih procesa do inteligentnih sučelja koja
-                  uče i prilagođavaju se korisnicima.
-                </p>
-              </article>
-              <article className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 hover:-translate-y-1">
-                <div className="mb-6">
-                  <img
-                    className="h-28 mx-auto"
-                    src="undraw_design_process.svg"
-                    alt="UX/UI design process illustration"
-                    width={160}
-                    height={112}
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-blue-950 mb-3 text-center">
-                  Dizajn
-                </h3>
-                <p className="text-slate-600 text-center leading-relaxed">
-                  Kreiramo digitalna iskustva vođena podacima i analizom
-                  ponašanja korisnika — dizajn koji je intuitivan, moderan i
-                  usmjeren na konverziju.
-                </p>
-              </article>
-              <article className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 hover:-translate-y-1">
-                <div className="mb-6">
-                  <img
-                    className="h-28 mx-auto"
-                    src="undraw_business_plan_re_0v81.svg"
-                    alt="Business analysis illustration"
-                    width={160}
-                    height={112}
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-blue-950 mb-3 text-center">
-                  Poslovna Analiza
-                </h3>
-                <p className="text-slate-600 text-center leading-relaxed">
-                  Koristimo analitiku za otkrivanje poslovnih uvida, predviđanje
-                  trendova i optimizaciju procesa — odluke temeljene na
-                  podacima, ne pretpostavkama.
-                </p>
-              </article>
+              {serviceCards.map((card) => (
+                <ServiceCard key={card.title} card={card} />
+              ))}
             </div>
           </div>
         </section>
 
         {/* Contact */}
         <section
-          ref={contactRef}
-          className="py-20 md:py-28 bg-white"
+          id="contact"
+          className="py-24 md:py-32 bg-white"
           aria-labelledby="contact-heading"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col lg:flex-row gap-16">
-              <div className="flex-1 flex flex-col gap-y-6">
+              <Reveal className="flex-1 flex flex-col gap-y-6">
+                <p className="text-accent-600 text-sm font-semibold tracking-widest uppercase">
+                  Kontakt
+                </p>
                 <h2
                   id="contact-heading"
-                  className="text-3xl md:text-4xl font-bold text-blue-950"
+                  className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-blue-950 mb-4"
                 >
                   Kontaktirajte Nas
                 </h2>
@@ -413,8 +315,8 @@ export default function Index() {
                   height={240}
                   loading="lazy"
                 />
-              </div>
-              <div className="flex-1">
+              </Reveal>
+              <Reveal className="flex-1" animation="fade-in-up-delay-150">
                 <Form
                   className="flex flex-col gap-5 bg-slate-50 rounded-2xl p-8 border border-slate-200"
                   onSubmit={handleSubmit}
@@ -426,7 +328,7 @@ export default function Index() {
                         Ime
                       </span>
                       <input
-                        className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow cursor-text"
+                        className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow cursor-text"
                         type="text"
                         placeholder="Vaše ime"
                         {...register("name")}
@@ -443,7 +345,7 @@ export default function Index() {
                         Email
                       </span>
                       <input
-                        className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow cursor-text"
+                        className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow cursor-text"
                         type="email"
                         placeholder="your@email.com"
                         {...register("email")}
@@ -461,7 +363,7 @@ export default function Index() {
                       Poruka
                     </span>
                     <textarea
-                      className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow min-h-[140px] resize-y cursor-text"
+                      className="px-4 py-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow min-h-[140px] resize-y cursor-text"
                       placeholder="Opišite vaš projekt..."
                       {...register("query")}
                       aria-invalid={errors.query ? "true" : "false"}
@@ -473,60 +375,20 @@ export default function Index() {
                     )}
                   </label>
                   <button
-                    className="w-full py-3 bg-blue-950 text-white font-semibold rounded-lg hover:bg-blue-900 transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn-primary w-full mt-2"
                     type="submit"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Slanje..." : "Pošalji Poruku"}
                   </button>
                 </Form>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-blue-950 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex flex-col items-center md:items-start gap-2">
-              <span className="text-xl font-bold tracking-tight">G-CODE</span>
-              <p className="text-sm text-slate-400">
-                Vaš partner u digitalnoj transformaciji.
-              </p>
-            </div>
-            <div className="flex flex-col items-center md:items-end gap-3">
-              <a
-                href="tel:+385993255982"
-                className="text-sm text-slate-300 hover:text-white transition-colors"
-              >
-                Telefon: +385 99 325 5982
-              </a>
-              <a
-                href="mailto:info@g-code.com.hr"
-                className="text-sm text-slate-300 hover:text-white transition-colors"
-              >
-                Email: info@g-code.com.hr
-              </a>
-              <Link
-                rel="noreferrer"
-                target="_blank"
-                to="https://www.linkedin.com/company/g-code-info/about/?viewAsMember=true"
-                aria-label="G-CODE on LinkedIn"
-                className="text-slate-300 hover:text-white transition-colors"
-              >
-                <FaLinkedin size={20} />
-              </Link>
-            </div>
-          </div>
-          <div className="border-t border-white/10 mt-8 pt-8 text-center">
-            <p className="text-sm text-slate-400">
-              &copy; {new Date().getFullYear()} G-CODE. Sva prava pridržana.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
